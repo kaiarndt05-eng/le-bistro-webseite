@@ -256,11 +256,19 @@
       /* Video füllt die gesamte rechte Hälfte */
     }
 
-    .hero-right video {
+    .hero-right .vimeo-wrapper {
       position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
+      overflow: hidden;
+    }
+    .hero-right .vimeo-wrapper iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 177.78vh; /* 16:9 bei voller Höhe */
+      height: 56.25vw; /* 16:9 bei voller Breite */
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      border: none;
+      pointer-events: none;
     }
 
     /* Links-Blend + Top/Bottom-Blend */
