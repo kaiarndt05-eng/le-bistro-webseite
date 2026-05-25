@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Datenschutzerklärung – Le Bistro Bückeburg</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --white:        #FAF9F6;
+      --off-white:    #F0EDE6;
+      --green:        #1E3D2C;
+      --green-accent: #3A7A56;
+      --green-border: rgba(30,61,44,0.15);
+      --dark:         #1C1E1A;
+      --text-dim:     rgba(28,30,26,0.72);
+      --text-muted:   rgba(28,30,26,0.52);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--dark);
+      font-family: var(--font-body);
+      font-weight: 300;
+    }
+
+    header {
+      padding: 22px 60px;
+      border-bottom: 1px solid var(--green-border);
+      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0;
+      background: rgba(250,249,246,0.96);
+      backdrop-filter: blur(16px);
+      z-index: 100;
+    }
+
+    .back-link {
+      font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-muted); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--green); }
+
+    .header-brand {
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 300;
+      color: var(--dark); text-decoration: none;
+      letter-spacing: 0.06em;
+    }
+
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 80px 40px 120px;
+    }
+
+    .page-label {
+      font-size: 0.56rem; letter-spacing: 0.42em; text-transform: uppercase;
+      color: var(--green-accent); margin-bottom: 16px; display: block;
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 300; line-height: 1.06;
+      color: var(--dark); margin-bottom: 56px;
+    }
+    h1 em { font-style: italic; color: var(--green); }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-weight: 400;
+      color: var(--dark);
+      margin: 44px 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--green-border);
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem; font-weight: 400;
+      color: var(--dark); margin: 24px 0 8px;
+    }
+
+    p {
+      font-size: 0.88rem; line-height: 1.9;
+      color: var(--text-dim); margin-bottom: 12px;
+    }
+
+    ul {
+      margin: 8px 0 14px 18px;
+    }
+    ul li {
+      font-size: 0.88rem; line-height: 1.85;
+      color: var(--text-dim); margin-bottom: 4px;
+    }
+
+    a { color: var(--green); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .info-box {
+      margin: 28px 0;
+      padding: 20px 24px;
+      border-left: 2px solid var(--green);
+      background: rgba(30,61,44,0.04);
+    }
+    .info-box p { margin-bottom: 4px; }
+
+    footer {
+      padding: 22px 60px;
+      border-top: 1px solid var(--green-border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-size: 0.62rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 22px; }
+    .footer-links a {
+      font-size: 0.62rem; color: var(--text-muted);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--green); }
+
+    @media (max-width: 640px) {
+      header, footer { padding: 18px 24px; }
+      main { padding: 48px 24px 80px; }
+      footer { flex-direction: column; gap: 12px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="back-link">← Zurück zur Website</a>
+    <a href="index.html" class="header-brand">Le Bistro</a>
+  </header>
+
+  <main>
+    <span class="page-label">Rechtliches</span>
+    <h1>Daten<em>schutz</em></h1>
+
+    <h2>1. Verantwortliche Stelle</h2>
+    <p>
+      Verantwortlich für die Datenverarbeitung auf dieser Website ist:
+    </p>
+    <div class="info-box">
+      <p><strong>Jennifer Mohme-Xhata</strong></p>
+      <p>Le Bistro</p>
+      <p>Lange Str. 10–11, 31675 Bückeburg</p>
+      <p>E-Mail: <a href="mailto:info@lebistro.de">info@lebistro.de</a></p>
+    </div>
+
+    <h2>2. Allgemeine Hinweise zur Datenverarbeitung</h2>
+    <p>
+      Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Diese Datenschutzerklärung klärt Sie über die Art, den Umfang und den Zweck der Verarbeitung personenbezogener Daten auf unserer Website auf.
+    </p>
+    <p>
+      Personenbezogene Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können. Diese Website kann ohne Angabe personenbezogener Daten besucht werden – eine Ausnahme bildet die freiwillige Nutzung des Reservierungsformulars.
+    </p>
+
+    <h2>3. Datenerfassung beim Besuch der Website</h2>
+    <h3>Server-Logfiles</h3>
+    <p>
+      Der Hosting-Anbieter dieser Website erhebt automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch übermittelt. Dies sind:
+    </p>
+    <ul>
+      <li>Browsertyp und Browserversion</li>
+      <li>Verwendetes Betriebssystem</li>
+      <li>Referrer-URL (zuvor besuchte Seite)</li>
+      <li>Hostname des zugreifenden Rechners</li>
+      <li>Uhrzeit der Serveranfrage</li>
+      <li>IP-Adresse (anonymisiert)</li>
+    </ul>
+    <p>
+      Diese Daten werden nicht mit anderen Datenquellen zusammengeführt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einem sicheren und stabilen Betrieb der Website).
+    </p>
+
+    <h2>4. Reservierungsformular</h2>
+    <p>
+      Wenn Sie unser Reservierungsformular nutzen, werden die von Ihnen eingegebenen Daten (Name, Kontaktdaten, gewünschter Termin, Personenzahl und Ihre Nachricht) zum Zweck der Bearbeitung Ihrer Anfrage verarbeitet.
+    </p>
+    <p>
+      Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung). Die Daten werden nicht an Dritte weitergegeben und nach Abschluss der Anfrage bzw. Reservation gelöscht, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+    </p>
+
+    <h2>5. Google Fonts</h2>
+    <p>
+      Diese Website nutzt Google Fonts zur einheitlichen Darstellung von Schriftarten. Anbieter ist Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.
+    </p>
+    <p>
+      Beim Aufruf einer Seite lädt Ihr Browser die benötigten Fonts direkt von Google-Servern. Dabei wird Ihre IP-Adresse an Google übertragen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an einer einheitlichen Darstellung). Weitere Informationen finden Sie in der Datenschutzerklärung von Google unter <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">https://policies.google.com/privacy</a>.
+    </p>
+
+    <h2>6. Ihre Rechte</h2>
+    <p>Sie haben gegenüber uns folgende Rechte hinsichtlich der Sie betreffenden personenbezogenen Daten:</p>
+    <ul>
+      <li><strong>Auskunftsrecht</strong> (Art. 15 DSGVO)</li>
+      <li><strong>Recht auf Berichtigung</strong> (Art. 16 DSGVO)</li>
+      <li><strong>Recht auf Löschung</strong> (Art. 17 DSGVO)</li>
+      <li><strong>Recht auf Einschränkung der Verarbeitung</strong> (Art. 18 DSGVO)</li>
+      <li><strong>Recht auf Datenübertragbarkeit</strong> (Art. 20 DSGVO)</li>
+      <li><strong>Widerspruchsrecht</strong> (Art. 21 DSGVO)</li>
+    </ul>
+    <p>
+      Zur Ausübung Ihrer Rechte wenden Sie sich bitte an: <a href="mailto:info@lebistro.de">info@lebistro.de</a>
+    </p>
+    <p>
+      Zudem haben Sie das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Die zuständige Aufsichtsbehörde für Niedersachsen ist der Landesbeauftragte für den Datenschutz Niedersachsen (LfD Niedersachsen), <a href="https://www.lfd.niedersachsen.de" target="_blank" rel="noopener noreferrer">www.lfd.niedersachsen.de</a>.
+    </p>
+
+    <h2>7. Aktualität dieser Erklärung</h2>
+    <p>
+      Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Mai 2025. Durch die Weiterentwicklung unserer Website oder aufgrund geänderter gesetzlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern.
+    </p>
+  </main>
+
+  <footer>
+    <span class="footer-copy">© 2025 Le Bistro Bückeburg. Alle Rechte vorbehalten.</span>
+    <div class="footer-links">
+      <a href="impressum.html">Impressum</a>
+      <a href="datenschutz.html">Datenschutz</a>
+    </div>
+  </footer>
+
+</body>
+</html>

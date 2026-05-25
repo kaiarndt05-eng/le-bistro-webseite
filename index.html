@@ -1,0 +1,2740 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Le Bistro Bückeburg – Restaurant · Wine · Bar | Feine Küche & exzellente Weine</title>
+  <meta name="description" content="Le Bistro in Bückeburg verbindet klassische Bistro-Küche mit modernem Raffinement. Genießen Sie außergewöhnliche Speisen, erlesene Weine und eine unvergessliche Atmosphäre." />
+  <meta name="keywords" content="Le Bistro, Restaurant Bückeburg, Weinbar Bückeburg, Bar, Fine Dining, Bistro, Wein, Abendessen, Reservierung" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Le Bistro" />
+  <link rel="canonical" href="https://www.lebistro.de/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="restaurant" />
+  <meta property="og:title" content="Le Bistro Bückeburg – Restaurant · Wine · Bar" />
+  <meta property="og:description" content="Feine Küche, erlesene Weine und eine unvergessliche Atmosphäre im Herzen von Bückeburg." />
+  <meta property="og:url" content="https://www.lebistro.de/" />
+  <meta property="og:locale" content="de_DE" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Le Bistro",
+    "description": "Restaurant, Wine & Bar – Feine Küche und erlesene Weine",
+    "servesCuisine": ["French", "European", "Contemporary"],
+    "priceRange": "€€€",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bückeburg",
+      "addressCountry": "DE"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "12:00",
+      "closes": "21:00"
+    },
+    "url": "https://www.lebistro.de"
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET & BASE ───────────────────────────────── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --white:        #FAF9F6;
+      --off-white:    #F0EDE6;
+      --light:        #E6E2D8;
+      --green:        #1E3D2C;
+      --green-mid:    #2C5A3F;
+      --green-accent: #3A7A56;
+      --green-pale:   rgba(30,61,44,0.07);
+      --green-border: rgba(30,61,44,0.15);
+      --black:        #111210;
+      --dark:         #1C1E1A;
+      --text:         #1C1E1A;
+      --text-muted:   rgba(28,30,26,0.52);
+      --text-dim:     rgba(28,30,26,0.72);
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ─── CUSTOM CURSOR (dunkelgrüner Pfeil) ─────────── */
+    body, a, button, [role=button], .menu-tab, .atm-cell, select, input, textarea {
+      cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='26'%3E%3Cpath d='M1 1L1 20L5.5 15.5L8.5 23L11 22L8 14.5L14 14.5Z' fill='%231E3D2C' stroke='%23ffffff' stroke-width='1.2' stroke-linejoin='round'/%3E%3C/svg%3E") 1 1, auto;
+    }
+
+    /* ─── SUBTLE PAPER TEXTURE ───────────────────────── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ─── SCROLL PROGRESS ────────────────────────────── */
+    #progress {
+      position: fixed; top: 0; left: 0; height: 2px;
+      background: var(--green);
+      z-index: 500;
+      transform-origin: left;
+      transform: scaleX(0);
+      transition: transform 0.1s linear;
+    }
+
+    /* ─── NAVIGATION ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      padding: 24px 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      z-index: 400;
+      transition: background 0.5s ease, padding 0.4s ease, box-shadow 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250,249,246,0.96);
+      backdrop-filter: blur(16px);
+      padding: 14px 60px;
+      box-shadow: 0 1px 0 var(--green-border);
+    }
+
+    .nav-logo-wrap {
+      display: flex; align-items: center;
+    }
+    .nav-logo-placeholder {
+      height: 44px; width: 110px;
+      border: 1px solid var(--green-border);
+      display: flex; align-items: center; justify-content: center;
+      background: var(--green-pale);
+      transition: border-color 0.3s;
+    }
+    .nav-logo-placeholder:hover { border-color: var(--green); }
+    .nav-logo-placeholder span {
+      font-size: 0.52rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex; gap: 40px; list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 400;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--green);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      border: 1px solid var(--green) !important;
+      background: var(--green) !important;
+      color: var(--white) !important;
+      padding: 9px 22px !important;
+      transition: background 0.3s, color 0.3s !important;
+    }
+    .nav-cta:hover {
+      background: transparent !important;
+      color: var(--green) !important;
+    }
+    .nav-cta::after { display: none !important; }
+
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 1px; background: var(--green);
+    }
+
+    /* ─── HERO ───────────────────────────────────────── */
+    #hero {
+      height: 100vh; min-height: 640px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+      background: var(--off-white);
+    }
+
+    /* Subtle vertical separator */
+    #hero::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 10%; bottom: 10%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--green-border) 30%, var(--green-border) 70%, transparent);
+      pointer-events: none;
+    }
+
+    /* ── Left side ── */
+    .hero-left {
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 100px 60px 80px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-left::before { content: none; }
+
+    .hero-eyebrow {
+      font-size: 0.58rem;
+      letter-spacing: 0.44em;
+      text-transform: uppercase;
+      color: var(--green-accent);
+      margin-bottom: 32px;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.9s 0.3s forwards;
+      position: relative;
+    }
+
+    .hero-logo-wrap {
+      margin-bottom: 32px;
+      opacity: 0;
+      animation: fadeUp 1s 0.5s forwards;
+      position: relative;
+    }
+
+    .hero-tagline {
+      display: flex; align-items: center; gap: 18px;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s forwards;
+      position: relative;
+    }
+    .hero-tagline span {
+      font-size: 0.58rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .hero-tagline .dot {
+      width: 4px; height: 4px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── Right side: Video (vollflächig, rahmenlos) ── */
+    .hero-right {
+      position: relative;
+      overflow: hidden;
+      /* Video füllt die gesamte rechte Hälfte */
+    }
+
+    .hero-right video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Links-Blend + Top/Bottom-Blend */
+    .hero-right::after {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to right,
+          #F0EDE6                0%,
+          rgba(240,237,230,0.92) 4%,
+          rgba(240,237,230,0.75) 9%,
+          rgba(240,237,230,0.5)  15%,
+          rgba(240,237,230,0.24) 21%,
+          rgba(240,237,230,0.08) 27%,
+          transparent            34%
+        ),
+        linear-gradient(to bottom,
+          #F0EDE6                0%,
+          rgba(240,237,230,0.88) 4%,
+          rgba(240,237,230,0.55) 9%,
+          rgba(240,237,230,0.18) 15%,
+          transparent            22%
+        ),
+        linear-gradient(to top,
+          #F0EDE6                0%,
+          rgba(240,237,230,0.88) 4%,
+          rgba(240,237,230,0.55) 9%,
+          rgba(240,237,230,0.18) 15%,
+          transparent            22%
+        );
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Placeholder – wird ausgeblendet sobald Video vorhanden */
+    .hero-video-placeholder {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #1a1e1b 0%, var(--green) 100%);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 10px; z-index: 0;
+    }
+    .hero-video-placeholder p {
+      font-size: 0.55rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(250,249,246,0.3);
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute; bottom: 36px; left: 25%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+      opacity: 0;
+      animation: fadeUp 0.9s 1.3s forwards;
+      z-index: 3;
+    }
+    .hero-scroll span {
+      font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .scroll-line {
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--green), transparent);
+      animation: scrollPulse 2.2s ease-in-out infinite;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      #hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        height: 100svh;
+      }
+      #hero::after { display: none; }
+      .hero-left {
+        padding: 100px 40px 30px;
+        order: 1;
+      }
+      .hero-left::before { font-size: 100vw; }
+      .hero-right {
+        order: 2;
+      }
+      .hero-right::after {
+        background:
+          linear-gradient(to bottom,
+            #F0EDE6                0%,
+            rgba(240,237,230,0.88) 5%,
+            rgba(240,237,230,0.5)  12%,
+            rgba(240,237,230,0.15) 20%,
+            transparent            30%
+          ),
+          linear-gradient(to top,
+            #F0EDE6                0%,
+            rgba(240,237,230,0.7)  5%,
+            rgba(240,237,230,0.3)  12%,
+            transparent            22%
+          );
+      }
+      .hero-scroll { left: 50%; }
+    }
+
+    /* ─── SECTION BASE ───────────────────────────────── */
+    section { position: relative; }
+
+    .section-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+
+    .green-divider {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 18px;
+    }
+    .green-divider-line {
+      flex: 1; height: 1px;
+      background: linear-gradient(to right, transparent, var(--green-border));
+    }
+    .green-divider-line.right {
+      background: linear-gradient(to left, transparent, var(--green-border));
+    }
+    .green-divider-ornament {
+      width: 5px; height: 5px;
+      border: 1px solid var(--green-accent);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .section-label {
+      font-size: 0.58rem; letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--green-accent);
+      margin-bottom: 14px; display: block;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      font-weight: 300;
+      line-height: 1.06;
+      color: var(--dark);
+    }
+    .section-title em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    /* ─── REVEAL ─────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.85s ease, transform 0.85s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.22s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+    .reveal-delay-4 { transition-delay: 0.5s; }
+
+    /* ─── ABOUT ──────────────────────────────────────── */
+    #about {
+      padding: 120px 0;
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    /* Collage: 1 groß links + 3 klein rechts, 3:2-konform */
+    .about-collage {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      grid-template-rows: repeat(3, auto);
+      gap: 5px;
+    }
+
+    .collage-main {
+      grid-column: 1;
+      grid-row: 1 / 4;
+      overflow: hidden;
+    }
+
+    .collage-main img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.55s ease;
+    }
+    .collage-main:hover img { transform: scale(1.03); }
+
+    .collage-thumb {
+      aspect-ratio: 3/2;
+      overflow: hidden;
+    }
+
+    .collage-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      transition: transform 0.55s ease;
+    }
+    .collage-thumb:hover img { transform: scale(1.05); }
+
+    .about-body {
+      margin-top: 28px;
+      font-size: 0.95rem; line-height: 1.9;
+      color: var(--text-dim);
+    }
+
+    .about-times {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid var(--green-border);
+    }
+
+    .about-times-label {
+      font-size: 0.56rem; letter-spacing: 0.36em; text-transform: uppercase;
+      color: var(--green-accent); margin-bottom: 18px;
+    }
+
+    .about-times-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 11px 0;
+      border-bottom: 1px solid var(--green-border);
+      font-size: 0.8rem;
+      color: var(--text-dim);
+    }
+
+    .about-times-row:last-child { border-bottom: none; }
+
+    .about-times-val {
+      font-weight: 400; color: var(--dark);
+    }
+
+    .about-times-closed {
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* ─── GAMBAS SATT ───────────────────────────────── */
+    #gambas {
+      background: var(--dark);
+      position: relative; overflow: hidden;
+    }
+    #gambas::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('gambas.png') center/cover no-repeat;
+      opacity: 0.18;
+    }
+    .gambas-inner {
+      position: relative; z-index: 1;
+      max-width: 720px; margin: 0 auto;
+      padding: 120px 40px;
+      text-align: center;
+    }
+    .gambas-label {
+      font-size: 0.58rem; letter-spacing: 0.44em; text-transform: uppercase;
+      color: var(--green-accent); margin-bottom: 24px;
+    }
+    .gambas-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 8vw, 7rem);
+      font-weight: 300; line-height: 0.95;
+      color: var(--white); margin-bottom: 48px;
+      letter-spacing: 0.04em;
+    }
+    .gambas-title em { color: var(--green-accent); font-style: italic; }
+    .gambas-desc {
+      font-size: 1rem; line-height: 1.9;
+      color: rgba(250,249,246,0.72); margin-bottom: 24px;
+    }
+    .gambas-note {
+      font-size: 0.82rem; line-height: 1.7;
+      color: rgba(250,249,246,0.45); margin-bottom: 52px;
+      font-style: italic;
+    }
+    .gambas-price {
+      display: flex; align-items: baseline; justify-content: center;
+      gap: 12px; margin-bottom: 44px;
+    }
+    .gambas-price-val {
+      font-family: var(--font-display);
+      font-size: 3.5rem; font-weight: 300; color: var(--white); line-height: 1;
+    }
+    .gambas-price-unit {
+      font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(250,249,246,0.4);
+    }
+    .gambas-cta {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid rgba(250,249,246,0.3);
+      color: var(--white); text-decoration: none;
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-family: var(--font-body);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .gambas-cta:hover { background: rgba(250,249,246,0.08); border-color: rgba(250,249,246,0.6); }
+
+    /* ─── MENU ───────────────────────────────────────── */
+    #menu {
+      padding: 120px 0;
+      background: var(--white);
+    }
+
+    .menu-header { text-align: center; margin-bottom: 60px; }
+
+    .menu-tabs {
+      display: flex; justify-content: center;
+      margin-bottom: 52px;
+      border-bottom: 1px solid var(--green-border);
+    }
+    .menu-tab {
+      padding: 11px 30px;
+      font-size: 0.6rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.3s, border-color 0.3s;
+      background: none; border-top: none; border-left: none; border-right: none;
+      font-family: var(--font-body); font-weight: 400;
+    }
+    .menu-tab.active { color: var(--green); border-bottom-color: var(--green); }
+    .menu-tab:hover { color: var(--green-mid); }
+
+    .menu-panel { display: none; }
+    .menu-panel.active { display: block; }
+
+    .menu-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1px; background: var(--green-border);
+    }
+
+    .menu-item {
+      padding: 28px 32px;
+      background: var(--white);
+      transition: background 0.3s;
+    }
+    .menu-item:hover { background: var(--green-pale); }
+
+    .menu-item-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 7px;
+    }
+    .menu-item-name {
+      font-family: var(--font-display);
+      font-size: 1.15rem; font-weight: 400; color: var(--dark);
+    }
+    .menu-item-dots {
+      flex: 1; margin: 0 10px 3px;
+      border-bottom: 1px dotted var(--green-border);
+    }
+    .menu-item-price {
+      font-family: var(--font-display);
+      font-size: 1rem; color: var(--green);
+      white-space: nowrap;
+    }
+    .menu-item-desc {
+      font-size: 0.73rem; color: var(--text-muted);
+      line-height: 1.6; letter-spacing: 0.02em;
+    }
+
+    /* Menu sub-heading within a panel */
+    .menu-subheading {
+      font-family: var(--font-display);
+      font-size: 1.4rem; font-weight: 300; font-style: italic;
+      color: var(--green); padding: 24px 32px 8px;
+      margin-bottom: 0; background: var(--white);
+      grid-column: 1 / -1;
+    }
+    .menu-subheading-note {
+      font-family: var(--font-body);
+      font-size: 0.62rem; letter-spacing: 0.18em;
+      color: var(--text-muted); display: block; font-style: normal;
+      margin-top: 2px;
+    }
+    /* Scrollable tabs for many tabs */
+    .menu-tabs {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+      flex-wrap: nowrap;
+    }
+    /* ─── DRINK STYLES ──────────────────────────────────── */
+    .drink-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--green-border); }
+    .drink-block { background: var(--white); padding: 32px; }
+    .drink-block-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-weight: 400; color: var(--dark);
+      border-bottom: 1px solid var(--green-border);
+      padding-bottom: 10px; margin-bottom: 16px;
+    }
+    /* Standard drink item */
+    .drink-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 7px 0; border-bottom: 1px solid rgba(30,61,44,0.06);
+      gap: 8px;
+    }
+    .drink-item:last-child { border-bottom: none; }
+    .drink-name {
+      font-size: 0.82rem; color: var(--text-dim); flex: 1;
+    }
+    .drink-name small {
+      color: var(--text-muted); font-size: 0.7em;
+    }
+    .drink-price {
+      font-family: var(--font-display);
+      font-size: 0.95rem; color: var(--green);
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .drink-price-multi {
+      display: flex; gap: 12px; flex-shrink: 0;
+    }
+    .drink-price-multi span {
+      font-size: 0.72rem; color: var(--text-muted); white-space: nowrap;
+    }
+    .drink-price-multi span strong {
+      color: var(--green); font-weight: 400;
+      font-family: var(--font-display); font-size: 0.9rem;
+    }
+    /* Wine rows */
+    .wine-item {
+      padding: 10px 0; border-bottom: 1px solid rgba(30,61,44,0.06);
+    }
+    .wine-item:last-child { border-bottom: none; }
+    .wine-item-name {
+      font-size: 0.85rem; color: var(--dark); margin-bottom: 4px; font-weight: 400;
+    }
+    .wine-item-prices {
+      display: flex; gap: 14px; flex-wrap: wrap;
+    }
+    .wine-item-prices span {
+      font-size: 0.7rem; color: var(--text-muted);
+    }
+    .wine-item-prices span strong {
+      color: var(--green); font-weight: 400;
+      font-family: var(--font-display); font-size: 0.88rem;
+    }
+    /* Shots grid */
+    .shots-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+      background: var(--green-border);
+    }
+    .shot-item {
+      background: var(--white);
+      padding: 10px 14px;
+      display: flex; justify-content: space-between; align-items: baseline; gap: 6px;
+      transition: background 0.25s;
+    }
+    .shot-item:hover { background: var(--green-pale); }
+    .shot-name {
+      font-size: 0.75rem; color: var(--text-dim); line-height: 1.3;
+    }
+    .shot-name small { color: var(--text-muted); font-size: 0.75em; display: block; }
+    .shot-price {
+      font-family: var(--font-display);
+      font-size: 0.9rem; color: var(--green); white-space: nowrap; flex-shrink: 0;
+    }
+    .shots-note {
+      padding: 12px 16px;
+      font-size: 0.7rem; color: var(--text-muted);
+      border-top: 1px solid var(--green-border);
+      font-style: italic;
+    }
+    @media (max-width: 768px) {
+      .drink-grid { grid-template-columns: 1fr; }
+      .shots-grid { grid-template-columns: repeat(2, 1fr); }
+      .drink-price-multi { flex-direction: column; gap: 2px; align-items: flex-end; }
+    }
+    @media (max-width: 480px) {
+      .shots-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ─── WEIN ───────────────────────────────────────── */
+    #wine {
+      padding: 120px 0;
+      background: var(--green);
+      overflow: hidden;
+    }
+
+    #menu .section-label { color: var(--text-muted); }
+    #wine .section-label { color: rgba(250,249,246,0.45); }
+    #wine .section-title { color: var(--white); text-align: center; }
+    #wine .section-title em { color: rgba(250,249,246,0.7); font-style: italic; }
+    #wine .menu-header { margin-bottom: 60px; }
+    #wine .menu-tabs { border-bottom-color: rgba(250,249,246,0.18); }
+    #wine .menu-tab { color: rgba(250,249,246,0.45); }
+    #wine .menu-tab.active { color: var(--white); border-bottom-color: rgba(250,249,246,0.5); }
+    #wine .menu-tab:hover { color: rgba(250,249,246,0.8); }
+    #wine .menu-grid { background: rgba(250,249,246,0.1); }
+    #wine .menu-item { background: rgba(250,249,246,0.03); }
+    #wine .menu-item:hover { background: rgba(250,249,246,0.08); }
+    #wine .menu-item-name { color: rgba(250,249,246,0.85); font-size: 0.95rem; }
+    #wine .menu-item-price { color: rgba(250,249,246,0.7); font-size: 0.82rem; font-family: var(--font-body); }
+    #wine .menu-item-desc { color: rgba(250,249,246,0.45); }
+    #wine .menu-item-dots { border-bottom-color: rgba(250,249,246,0.15); }
+    #wine .menu-subheading { color: rgba(250,249,246,0.65); background: var(--green); }
+    #wine .mi-detail { font-family: var(--font-body); font-size: 0.72em; color: rgba(250,249,246,0.38); font-weight: 400; }
+
+    .wine-layout {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: 90px; align-items: center;
+    }
+
+    .wine-body {
+      margin-top: 26px;
+      font-size: 0.93rem; line-height: 1.9;
+      color: rgba(250,249,246,0.65);
+    }
+
+    .wine-categories {
+      margin-top: 40px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .wine-cat {
+      padding: 18px 20px;
+      border: 1px solid rgba(250,249,246,0.12);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .wine-cat:hover {
+      border-color: rgba(250,249,246,0.3);
+      background: rgba(250,249,246,0.04);
+    }
+    .wine-cat-name {
+      font-family: var(--font-display);
+      font-size: 1.05rem; color: var(--white); margin-bottom: 3px;
+    }
+    .wine-cat-count {
+      font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(250,249,246,0.4);
+    }
+
+    .wine-visual { position: relative; }
+
+    .wine-highlight {
+      padding: 36px;
+      border: 1px solid rgba(250,249,246,0.15);
+      background: rgba(250,249,246,0.04);
+      text-align: center;
+    }
+    .wine-highlight-label {
+      font-size: 0.56rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(250,249,246,0.45); margin-bottom: 12px;
+    }
+    .wine-highlight-name {
+      font-family: var(--font-display);
+      font-size: 1.55rem; font-weight: 300; color: var(--white);
+      margin-bottom: 8px; line-height: 1.3;
+    }
+    .wine-highlight-vintage {
+      font-size: 0.7rem; color: rgba(250,249,246,0.45);
+    }
+
+    .wine-numbers {
+      margin-top: 24px;
+      display: flex; gap: 0;
+    }
+    .wine-num {
+      flex: 1; padding: 20px;
+      border: 1px solid rgba(250,249,246,0.1);
+      text-align: center;
+    }
+    .wine-num + .wine-num { border-left: none; }
+    .wine-num-val {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 300; color: var(--white);
+    }
+    .wine-num-label {
+      font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(250,249,246,0.4); margin-top: 4px;
+    }
+
+    /* ─── RÄUMLICHKEITEN ─────────────────────────────── */
+    #rooms {
+      padding: 120px 0;
+      background: var(--white);
+    }
+
+    .rooms-header { text-align: center; margin-bottom: 64px; }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--green-border);
+    }
+
+    .room-card {
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      transition: background 0.4s;
+    }
+    .room-card:hover { background: var(--off-white); }
+
+    .room-card-top {
+      aspect-ratio: 16/9;
+      background: var(--light);
+      border-bottom: 1px solid var(--green-border);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .room-card:nth-child(1) .room-card-top {
+      background: linear-gradient(135deg, #1E3D2C 0%, #2C5A3F 60%, #3A7A56 100%);
+    }
+    .room-card:nth-child(2) .room-card-top {
+      background: linear-gradient(160deg, #111210 0%, #1E3D2C 100%);
+    }
+
+    .room-card-top-inner {
+      position: relative; z-index: 1; text-align: center; padding: 40px;
+    }
+    .room-icon {
+      font-size: 2.8rem; margin-bottom: 12px; opacity: 0.6;
+    }
+    .room-capacity-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(250,249,246,0.25);
+      padding: 7px 18px;
+      font-size: 0.6rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: rgba(250,249,246,0.7);
+      margin-top: 10px;
+    }
+    .room-capacity-badge strong {
+      color: var(--white); font-weight: 400;
+      font-family: var(--font-display); font-size: 1.1rem;
+    }
+
+    /* Overlay photo placeholder text */
+    .room-photo-hint {
+      font-size: 0.52rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(250,249,246,0.3); margin-top: 16px;
+    }
+
+    .room-card-body { padding: 36px 40px 40px; }
+
+    .room-tag {
+      display: inline-block;
+      font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--white); background: var(--green);
+      padding: 4px 12px; margin-bottom: 18px;
+    }
+
+    .room-title {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 300; color: var(--dark);
+      line-height: 1.1; margin-bottom: 16px;
+    }
+    .room-title em { font-style: italic; color: var(--green); }
+
+    .room-desc {
+      font-size: 0.88rem; line-height: 1.85; color: var(--text-dim);
+      margin-bottom: 24px;
+    }
+
+    .room-features {
+      list-style: none; display: flex; flex-direction: column; gap: 9px;
+      margin-bottom: 32px;
+    }
+    .room-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 0.78rem; color: var(--text-dim); line-height: 1.5;
+    }
+    .room-features li::before {
+      content: '✦';
+      color: var(--green-accent); font-size: 0.5rem;
+      margin-top: 4px; flex-shrink: 0;
+    }
+
+    .room-cta {
+      display: inline-block;
+      border: 1px solid var(--green);
+      color: var(--green); text-decoration: none;
+      font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase;
+      padding: 12px 28px;
+      font-family: var(--font-body); font-weight: 400;
+      transition: background 0.3s, color 0.3s;
+      cursor: pointer; background: none;
+    }
+    .room-cta:hover { background: var(--green); color: var(--white); }
+
+    .room-divider {
+      height: 1px; background: var(--green-border);
+      margin: 28px 0;
+    }
+
+    .room-note {
+      font-size: 0.72rem; color: var(--text-muted);
+      line-height: 1.6;
+      padding: 14px 16px;
+      background: var(--green-pale);
+      border-left: 2px solid var(--green);
+    }
+
+    /* ─── FERIENWOHNUNG ──────────────────────────────── */
+    #apartment {
+      padding: 120px 0;
+      background: var(--green);
+    }
+
+    #apartment .section-label { color: rgba(250,249,246,0.5); }
+    #apartment .section-title { color: var(--white); }
+    #apartment .section-title em { color: rgba(250,249,246,0.65); }
+
+    .apt-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .apt-image-col {
+      position: relative;
+    }
+    .apt-img-frame {
+      aspect-ratio: 4/3;
+      background: rgba(250,249,246,0.06);
+      border: 1px solid rgba(250,249,246,0.12);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .apt-img-frame::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(250,249,246,0.04) 0%, transparent 60%);
+    }
+    .apt-img-placeholder {
+      text-align: center; position: relative; z-index: 1;
+    }
+    .apt-img-placeholder p {
+      font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: rgba(250,249,246,0.3); margin-top: 10px;
+    }
+    .apt-img-icon {
+      font-size: 2rem; opacity: 0.3;
+    }
+
+    .apt-price-badge {
+      position: absolute;
+      bottom: -1px; right: -1px;
+      background: var(--white);
+      padding: 24px 28px;
+      text-align: center;
+    }
+    .apt-price-val {
+      font-family: var(--font-display);
+      font-size: 2.4rem; font-weight: 300;
+      color: var(--green); line-height: 1;
+    }
+    .apt-price-unit {
+      font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--text-muted); margin-top: 4px;
+    }
+    .apt-minstay {
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      color: var(--green-mid); margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    .apt-desc {
+      margin-top: 26px;
+      font-size: 0.9rem; line-height: 1.9;
+      color: rgba(250,249,246,0.65);
+    }
+
+    .apt-amenities {
+      margin-top: 36px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .apt-amenity {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid rgba(250,249,246,0.1);
+      background: rgba(250,249,246,0.04);
+      font-size: 0.78rem;
+      color: rgba(250,249,246,0.75);
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .apt-amenity:hover {
+      border-color: rgba(250,249,246,0.22);
+      background: rgba(250,249,246,0.07);
+    }
+    .apt-amenity-icon {
+      font-size: 1rem; flex-shrink: 0; opacity: 0.7;
+    }
+
+    .apt-highlights {
+      margin-top: 32px;
+      display: flex; gap: 0;
+    }
+    .apt-hl {
+      flex: 1; padding: 20px;
+      border: 1px solid rgba(250,249,246,0.1);
+      text-align: center;
+    }
+    .apt-hl + .apt-hl { border-left: none; }
+    .apt-hl-val {
+      font-family: var(--font-display);
+      font-size: 2rem; font-weight: 300; color: var(--white);
+    }
+    .apt-hl-label {
+      font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(250,249,246,0.4); margin-top: 4px;
+    }
+
+    .apt-cta-block {
+      margin-top: 40px;
+      padding: 28px 32px;
+      border: 1px solid rgba(250,249,246,0.15);
+      background: rgba(250,249,246,0.04);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .apt-cta-text {
+      font-size: 0.85rem; color: rgba(250,249,246,0.65); line-height: 1.5;
+    }
+    .apt-cta-text strong {
+      display: block; color: var(--white); font-weight: 400;
+      font-size: 0.9rem; margin-bottom: 2px;
+    }
+    .apt-whatsapp-btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      padding: 13px 24px;
+      font-family: var(--font-body);
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .apt-whatsapp-btn:hover { background: #1ebe5d; }
+    .apt-whatsapp-icon { font-size: 1.1rem; }
+
+    @media (max-width: 1024px) {
+      .apt-layout { grid-template-columns: 1fr; gap: 56px; }
+      .apt-amenities { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .apt-amenities { grid-template-columns: 1fr; }
+      .apt-cta-block { flex-direction: column; align-items: flex-start; }
+    }
+
+
+    /* ─── SPORTSBAR ──────────────────────────────────── */
+    #sportsbar {
+      padding: 0;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sportsbar-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 560px;
+    }
+
+    .sportsbar-visual {
+      position: relative;
+      background: var(--black);
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      min-height: 400px;
+    }
+
+    /* Animierter Glüh-Effekt im Hintergrund – simuliert Bildschirm-Atmosphäre */
+    .sportsbar-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(30,61,44,0.35) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 70%, rgba(15,40,25,0.4) 0%, transparent 60%);
+      animation: screenGlow 4s ease-in-out infinite alternate;
+    }
+    @keyframes screenGlow {
+      0%   { opacity: 0.7; }
+      100% { opacity: 1; }
+    }
+
+    .sportsbar-screen {
+      position: relative; z-index: 1;
+      width: 78%; aspect-ratio: 16/9;
+      background: linear-gradient(135deg, #0a1a0f 0%, #1a3522 60%, #0f2018 100%);
+      border: 1px solid rgba(30,61,44,0.5);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 60px rgba(30,61,44,0.4), 0 0 120px rgba(10,20,15,0.6);
+    }
+    /* Bildschirm-Reflexion oben */
+    .sportsbar-screen::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 30%;
+      background: linear-gradient(to bottom, rgba(250,249,246,0.04), transparent);
+      pointer-events: none;
+    }
+    .sportsbar-screen-content {
+      text-align: center; padding: 24px;
+    }
+    .screen-logo-dazn {
+      font-family: var(--font-body);
+      font-size: 1.8rem; font-weight: 500;
+      letter-spacing: 0.08em;
+      color: rgba(250,249,246,0.9);
+      margin-bottom: 12px;
+    }
+    .screen-live-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(220,38,38,0.85);
+      padding: 4px 12px;
+      font-size: 0.58rem; letter-spacing: 0.28em; text-transform: uppercase;
+      color: #fff; font-weight: 500;
+    }
+    .screen-live-badge::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      animation: livePulse 1.2s ease-in-out infinite;
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    .screen-events {
+      margin-top: 16px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .screen-event {
+      font-size: 0.6rem; letter-spacing: 0.14em;
+      color: rgba(250,249,246,0.35);
+      text-transform: uppercase;
+    }
+
+    /* Stimmungs-Lichtstreifen unten */
+    .sportsbar-visual::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--green), var(--green-accent), var(--green), transparent);
+      opacity: 0.6;
+    }
+
+    .sportsbar-text {
+      padding: 70px 60px;
+      display: flex; flex-direction: column; justify-content: center;
+      border-left: 1px solid rgba(250,249,246,0.06);
+    }
+
+    .sportsbar-text .section-label { color: rgba(250,249,246,0.45); }
+    .sportsbar-text .section-title { color: var(--white); margin-top: 14px; }
+    .sportsbar-text .section-title em { color: var(--green-accent); }
+
+    .sportsbar-desc {
+      margin-top: 24px;
+      font-size: 0.9rem; line-height: 1.9;
+      color: rgba(250,249,246,0.6);
+    }
+
+    .sportsbar-events {
+      margin-top: 36px;
+      display: flex; flex-direction: column; gap: 0;
+      border: 1px solid rgba(250,249,246,0.08);
+    }
+    .sportsbar-event {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(250,249,246,0.06);
+      transition: background 0.3s;
+    }
+    .sportsbar-event:last-child { border-bottom: none; }
+    .sportsbar-event:hover { background: rgba(250,249,246,0.04); }
+    .event-icon {
+      font-size: 1.3rem; flex-shrink: 0; opacity: 0.7;
+    }
+    .event-info { flex: 1; }
+    .event-name {
+      font-size: 0.82rem; color: rgba(250,249,246,0.85);
+      font-weight: 400; letter-spacing: 0.04em;
+    }
+    .event-detail {
+      font-size: 0.65rem; color: rgba(250,249,246,0.35);
+      letter-spacing: 0.1em; margin-top: 2px;
+    }
+    .event-provider {
+      font-size: 0.6rem; letter-spacing: 0.15em;
+      color: var(--green-accent); text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .sportsbar-note {
+      margin-top: 28px;
+      padding: 16px 20px;
+      border-left: 2px solid var(--green);
+      background: rgba(250,249,246,0.03);
+      font-size: 0.78rem; color: rgba(250,249,246,0.5);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 1024px) {
+      .sportsbar-inner { grid-template-columns: 1fr; }
+      .sportsbar-text { padding: 50px 40px; border-left: none; border-top: 1px solid rgba(250,249,246,0.06); }
+    }
+    @media (max-width: 768px) {
+      .sportsbar-text { padding: 40px 24px; }
+      .sportsbar-screen { width: 88%; }
+    }
+
+    /* ─── RESERVIERUNG ───────────────────────────────── */
+    #reservation {
+      padding: 120px 0;
+      background: var(--white);
+    }
+
+    .reservation-layout {
+      display: grid; grid-template-columns: 1fr 1.35fr;
+      gap: 90px; align-items: start;
+    }
+
+    .res-body {
+      margin-top: 22px;
+      font-size: 0.9rem; line-height: 1.9; color: var(--text-dim);
+    }
+
+    .opening-times { margin-top: 40px; }
+    .ot-label {
+      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--green-accent); margin-bottom: 18px;
+    }
+    .ot-row {
+      display: flex; justify-content: space-between;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--green-border);
+      font-size: 0.78rem; color: var(--text-dim);
+    }
+    .ot-time { color: var(--dark); font-weight: 400; }
+
+    .res-form {
+      background: var(--off-white);
+      border: 1px solid var(--green-border);
+      padding: 44px;
+    }
+    .form-title {
+      font-family: var(--font-display);
+      font-size: 1.7rem; font-weight: 300; color: var(--dark);
+      margin-bottom: 32px;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-bottom: 14px;
+    }
+    .form-group {
+      display: flex; flex-direction: column; gap: 7px;
+      margin-bottom: 14px;
+    }
+    .form-label {
+      font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .form-input, .form-select, .form-textarea {
+      background: transparent;
+      border: none; border-bottom: 1px solid var(--green-border);
+      color: var(--dark); font-family: var(--font-body);
+      font-size: 0.85rem; font-weight: 300;
+      padding: 10px 0; outline: none;
+      transition: border-color 0.3s;
+      width: 100%; appearance: none;
+    }
+    .form-select { cursor: pointer; }
+    .form-select option { background: var(--white); color: var(--dark); }
+    .form-textarea { resize: none; height: 75px; }
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-bottom-color: var(--green);
+    }
+    .form-input::placeholder, .form-textarea::placeholder {
+      color: var(--text-muted);
+    }
+    .form-submit {
+      width: 100%; margin-top: 18px;
+      padding: 15px;
+      background: transparent;
+      border: 1px solid var(--green);
+      color: var(--green);
+      font-family: var(--font-body);
+      font-size: 0.63rem; letter-spacing: 0.28em; text-transform: uppercase;
+      cursor: pointer; font-weight: 400;
+      transition: background 0.35s, color 0.35s;
+    }
+    .form-submit:hover { background: var(--green); color: var(--white); }
+
+    /* ─── FOOTER ─────────────────────────────────────── */
+    footer {
+      padding: 90px 0 0;
+      background: var(--dark);
+      color: var(--white);
+    }
+
+    .contact-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 60px; padding-bottom: 70px;
+      border-bottom: 1px solid rgba(250,249,246,0.1);
+    }
+
+    .footer-logo-wrap { margin-bottom: 20px; }
+    .footer-logo-placeholder {
+      height: 50px; width: 130px;
+      border: 1px solid rgba(250,249,246,0.15);
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(250,249,246,0.04);
+    }
+    .footer-logo-placeholder span {
+      font-size: 0.5rem; letter-spacing: 0.22em;
+      text-transform: uppercase; color: rgba(250,249,246,0.3);
+    }
+    .footer-tagline {
+      font-size: 0.58rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(250,249,246,0.35); margin-bottom: 18px;
+    }
+    .footer-brand-body {
+      font-size: 0.78rem; line-height: 1.8;
+      color: rgba(250,249,246,0.45); max-width: 280px;
+    }
+    .social-links {
+      display: flex; gap: 10px; margin-top: 24px;
+    }
+    .social-link {
+      width: 32px; height: 32px;
+      border: 1px solid rgba(250,249,246,0.15);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: rgba(250,249,246,0.35);
+      font-size: 0.72rem;
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .social-link:hover { border-color: rgba(250,249,246,0.6); color: var(--white); }
+
+    .contact-col-title {
+      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(250,249,246,0.35); margin-bottom: 22px;
+    }
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+    .contact-list a, .contact-list li {
+      text-decoration: none; color: rgba(250,249,246,0.55);
+      font-size: 0.8rem; line-height: 1.55;
+      transition: color 0.3s;
+    }
+    .contact-list a:hover { color: var(--white); }
+
+    .footer-bottom {
+      padding: 22px 0;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.62rem; color: rgba(250,249,246,0.25); letter-spacing: 0.06em;
+    }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a {
+      font-size: 0.62rem; color: rgba(250,249,246,0.25);
+      text-decoration: none; transition: color 0.3s;
+    }
+    .footer-legal a:hover { color: rgba(250,249,246,0.7); }
+
+    /* ─── GALERIE & LIGHTBOX ─────────────────────────── */
+
+    /* Räume – statisches Foto mit Hover-Hint */
+    .room-photo-cover {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .room-photo-trigger { cursor: pointer; }
+    .room-photo-view-hint {
+      position: absolute; inset: 0; z-index: 3;
+      display: flex; align-items: center; justify-content: center;
+      background: transparent;
+      transition: background 0.35s;
+    }
+    .room-photo-trigger:hover .room-photo-view-hint { background: rgba(0,0,0,0.3); }
+    .room-photo-view-hint span {
+      font-size: 0.6rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: #fff; padding: 9px 22px;
+      border: 1px solid rgba(250,249,246,0.5);
+      background: rgba(0,0,0,0.38);
+      opacity: 0; transform: translateY(6px);
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    .room-photo-trigger:hover .room-photo-view-hint span { opacity: 1; transform: translateY(0); }
+
+    /* Kapazitäts-Badge Overlay (bleibt erhalten) */
+    .room-slide-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: flex-start; justify-content: flex-end;
+      padding: 20px 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    /* Apartment Buchungsinfo-Spalte */
+    .apt-booking { display: flex; flex-direction: column; align-items: stretch; }
+    .apt-price-card {
+      padding: 36px 28px;
+      border: 1px solid rgba(250,249,246,0.15);
+      background: rgba(250,249,246,0.06);
+      text-align: center;
+      margin-bottom: 0;
+    }
+    .apt-price-card .apt-price-val {
+      font-family: var(--font-display);
+      font-size: 3rem; font-weight: 300; color: var(--white); line-height: 1;
+    }
+    .apt-price-card .apt-price-unit {
+      font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(250,249,246,0.45); margin-top: 6px;
+    }
+    .apt-price-card .apt-minstay {
+      font-size: 0.6rem; letter-spacing: 0.18em;
+      color: var(--green-accent); margin-top: 8px; text-transform: uppercase;
+    }
+
+    /* Apartment Info-Leiste */
+    .apt-infobar {
+      display: flex; gap: 48px; align-items: flex-start;
+      margin-top: 52px;
+      flex-wrap: wrap;
+    }
+    .apt-infobar .apt-amenities {
+      flex: 1 1 400px;
+      margin-top: 0;
+      grid-template-columns: 1fr 1fr;
+    }
+    .apt-infobar-right {
+      flex: 0 0 220px;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    @media (max-width: 768px) {
+      .apt-infobar { flex-direction: column; gap: 32px; }
+      .apt-infobar-right { flex: 1 1 auto; width: 100%; }
+    }
+
+    /* Apartment Gallery4 */
+    .apt-gallery4 { margin-top: 52px; }
+    .g4-tabs {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .g4-tab {
+      padding: 7px 18px;
+      font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase;
+      border: 1px solid rgba(250,249,246,0.2);
+      background: transparent;
+      color: rgba(250,249,246,0.45);
+      cursor: pointer; font-family: var(--font-body); font-weight: 400;
+      transition: background 0.25s, color 0.25s, border-color 0.25s;
+    }
+    .g4-tab.active, .g4-tab:hover {
+      background: rgba(250,249,246,0.12);
+      color: var(--white);
+      border-color: rgba(250,249,246,0.42);
+    }
+    .g4-carousel { position: relative; }
+    .g4-track {
+      display: flex; gap: 14px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; padding-bottom: 4px;
+    }
+    .g4-track::-webkit-scrollbar { display: none; }
+    .g4-card {
+      flex: 0 0 calc(50% - 7px);
+      scroll-snap-align: start; cursor: pointer; overflow: hidden;
+    }
+    .g4-card.g4-hidden { display: none; }
+    .g4-card img {
+      width: 100%; aspect-ratio: 16/9;
+      object-fit: cover; display: block;
+      filter: brightness(0.82);
+      transition: transform 0.5s ease, filter 0.35s;
+    }
+    .g4-card:hover img { transform: scale(1.04); filter: brightness(1); }
+    .g4-arrow {
+      position: absolute; top: calc(50% - 16px); transform: translateY(-50%);
+      z-index: 5;
+      background: rgba(250,249,246,0.08); border: 1px solid rgba(250,249,246,0.18);
+      color: #fff; font-size: 1.6rem; font-family: var(--font-body);
+      width: 36px; height: 50px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.25s;
+    }
+    .g4-arrow-prev { left: -44px; }
+    .g4-arrow-next { right: -44px; }
+    .g4-arrow:hover { background: rgba(250,249,246,0.22); }
+    @media (max-width: 1140px) { .g4-arrow { display: none; } }
+    @media (max-width: 900px)  { .g4-card { flex: 0 0 calc(50% - 8px); } }
+    @media (max-width: 560px)  { .g4-card { flex: 0 0 82%; } }
+
+    /* Lightbox */
+    #lightbox {
+      position: fixed; inset: 0; z-index: 950;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.28s ease;
+    }
+    #lightbox.open { opacity: 1; pointer-events: all; }
+    #lightboxBackdrop { position: absolute; inset: 0; background: rgba(6,10,8,0.94); }
+    #lightboxImgWrap {
+      position: relative; z-index: 1;
+      max-width: 90vw; max-height: 88vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #lightboxImg {
+      max-width: 100%; max-height: 88vh;
+      object-fit: contain; display: block; user-select: none;
+    }
+    #lightboxClose {
+      position: fixed; top: 18px; right: 22px; z-index: 2;
+      background: rgba(250,249,246,0.08); border: 1px solid rgba(250,249,246,0.18);
+      color: rgba(250,249,246,0.65); font-size: 1.1rem;
+      width: 38px; height: 38px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: color 0.2s, background 0.2s;
+    }
+    #lightboxClose:hover { color: #fff; background: rgba(250,249,246,0.2); }
+    #lightboxPrev, #lightboxNext {
+      position: fixed; top: 50%; transform: translateY(-50%); z-index: 2;
+      background: rgba(250,249,246,0.08); border: 1px solid rgba(250,249,246,0.16);
+      color: #fff; font-size: 1.8rem; font-family: var(--font-body);
+      width: 46px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: background 0.25s;
+    }
+    #lightboxPrev { left: 14px; }
+    #lightboxNext { right: 14px; }
+    #lightboxPrev:hover, #lightboxNext:hover { background: rgba(250,249,246,0.22); }
+    #lightboxCounter {
+      position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); z-index: 2;
+      font-size: 0.62rem; letter-spacing: 0.24em; text-transform: uppercase;
+      color: rgba(250,249,246,0.38);
+    }
+
+
+    /* ─── ANIMATIONS ─────────────────────────────────── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.3; transform: scaleY(0.65); }
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .section-inner { padding: 0 40px; }
+      nav { padding: 20px 40px; }
+      nav.scrolled { padding: 12px 40px; }
+      .about-grid { grid-template-columns: 1fr; gap: 56px; }
+      .about-image-col { order: -1; }
+      .wine-layout { grid-template-columns: 1fr; gap: 56px; }
+      .reservation-layout { grid-template-columns: 1fr; gap: 56px; }
+      .contact-top { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .section-inner { padding: 0 24px; }
+      nav { padding: 18px 24px; }
+      nav.scrolled { padding: 12px 24px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .menu-grid { grid-template-columns: 1fr; }
+.wine-categories { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .res-form { padding: 28px 20px; }
+      .contact-top { grid-template-columns: 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 14px; }
+      .hero-corner { display: none; }
+    }
+
+    /* Mobile menu */
+    .mobile-menu {
+      position: fixed; inset: 0;
+      background: rgba(250,249,246,0.98);
+      backdrop-filter: blur(20px);
+      z-index: 300;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 28px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .mobile-menu.open { opacity: 1; pointer-events: all; }
+    .mobile-menu a {
+      font-family: var(--font-display);
+      font-size: 2.2rem; font-weight: 300; font-style: italic;
+      color: var(--dark); text-decoration: none;
+      transition: color 0.3s;
+    }
+    .mobile-menu a:hover { color: var(--green); }
+    .mobile-close {
+      position: absolute; top: 24px; right: 28px;
+      font-size: 1.4rem; color: var(--text-muted);
+      cursor: pointer; background: none; border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="progress"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
+    <button class="mobile-close" id="mobileClose" aria-label="Menü schließen">✕</button>
+    <a href="#about" onclick="closeMobileMenu()">Geschichte</a>
+    <a href="#menu" onclick="closeMobileMenu()">Speisekarte</a>
+    <a href="#wine" onclick="closeMobileMenu()">Getränke</a>
+    <a href="#rooms" onclick="closeMobileMenu()">Räumlichkeiten</a>
+    <a href="#sportsbar" onclick="closeMobileMenu()">Sportsbar</a>
+    <a href="#reservation" onclick="closeMobileMenu()">Reservierung</a>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="navbar" role="navigation" aria-label="Hauptnavigation">
+    <div class="nav-logo-wrap">
+      <a href="#hero">
+        <img src="logo.png" alt="Le Bistro" style="height:44px;width:auto;display:block;" />
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#about">Geschichte</a></li>
+      <li><a href="#menu">Speisekarte</a></li>
+      <li><a href="#wine">Getränke</a></li>
+      <li><a href="#rooms">Räumlichkeiten</a></li>
+      <li><a href="#sportsbar">Sportsbar</a></li>
+      <li><a href="#reservation" class="nav-cta">Reservieren</a></li>
+    </ul>
+    <div class="nav-hamburger" id="hamburger" role="button" aria-label="Menü öffnen" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" aria-label="Willkommen bei Le Bistro">
+
+    <!-- Links: nur Logo -->
+    <div class="hero-left">
+      <div class="hero-logo-wrap">
+        <img src="logo.png" alt="Le Bistro"
+             style="height:clamp(140px,18vw,240px);width:auto;display:block;margin:0 auto;" />
+      </div>
+    </div>
+
+    <!-- Rechts: Video (vollflächig) -->
+    <div class="hero-right">
+      <video autoplay muted loop playsinline>
+        <source src="hero.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <!-- Scroll-Indikator -->
+    <div class="hero-scroll" aria-hidden="true">
+      <span>Entdecken</span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section id="about" aria-labelledby="about-heading">
+    <div class="section-inner" style="padding-top:120px;padding-bottom:120px;">
+      <div class="about-grid">
+
+        <!-- Collage -->
+        <div class="about-image-col reveal">
+          <div class="about-collage">
+            <div class="collage-main">
+              <img src="bistro_innen_1.png" alt="Le Bistro Innenraum" />
+            </div>
+            <div class="collage-thumb"><img src="bistro_innen_2.png" alt="Le Bistro Weinbar" /></div>
+            <div class="collage-thumb"><img src="bistro_innen_3.png" alt="Le Bistro Ambiente" /></div>
+            <div class="collage-thumb"><img src="bistro_aussen_1.png" alt="Le Bistro Außenansicht" /></div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="about-text">
+          <div class="green-divider reveal">
+            <div class="green-divider-line"></div>
+            <div class="green-divider-ornament"></div>
+            <div class="green-divider-line right"></div>
+          </div>
+          <span class="section-label reveal reveal-delay-1">Unsere Geschichte</span>
+          <h2 class="section-title reveal reveal-delay-2" id="about-heading">
+            Wo Tradition<br><em>auf Raffinement</em><br>trifft
+          </h2>
+          <p class="about-body reveal reveal-delay-3">
+            Le Bistro verbindet die Seele des klassischen Bistros mit der Präzision zeitgenössischer Hochküche. Seit drei Jahrzehnten laden wir unsere Gäste im Herzen von Bückeburg ein – in einer Atmosphäre, die Eleganz atmet, ohne jemals die Wärme zu verlieren, die ein wahrhaftiges Gasthaus auszeichnet.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMBAS SATT -->
+  <section id="gambas" aria-label="Gambas Satt – Spezialität des Hauses">
+    <div class="gambas-inner">
+      <div class="gambas-label reveal">Spezialität des Hauses</div>
+      <h2 class="gambas-title reveal">GAMBAS<br><em>SATT</em></h2>
+      <p class="gambas-desc reveal">
+        Lecker gebackene Gambas ungeschält in Chili-Öl, dazu frischer Salat,
+        hausgebackenes Napolibrot mit Mozzarella gefüllt.<br>
+        Dazu reichen wir Dir Knobidip. Unglaublich lecker.
+      </p>
+      <p class="gambas-note reveal">
+        Das ganze bis Du satt bist – bei Nachservice bekommst Du übrigens geschälte Gambas.
+      </p>
+      <div class="gambas-price reveal">
+        <span class="gambas-price-val">28,99 €</span>
+        <span class="gambas-price-unit">pro Person</span>
+      </div>
+      <a href="#reservation" class="gambas-cta reveal">Reservierung vorteilhaft</a>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" aria-labelledby="menu-heading">
+    <div class="section-inner">
+      <div class="menu-header">
+        <div class="green-divider reveal" style="justify-content:center;">
+          <div class="green-divider-line" style="max-width:80px;"></div>
+          <div class="green-divider-ornament"></div>
+          <div class="green-divider-line right" style="max-width:80px;"></div>
+        </div>
+        <span class="section-label reveal">Speisekarte</span>
+        <h2 class="section-title reveal reveal-delay-1" id="menu-heading" style="text-align:center;">
+          Speise<em>karte</em>
+        </h2>
+      </div>
+
+      <div class="menu-tabs" role="tablist">
+        <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-starters" data-tab="starters">Starters & Salate</button>
+        <button class="menu-tab active" role="tab" aria-selected="true" aria-controls="panel-pizza" data-tab="pizza">Pizza</button>
+        <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-pasta" data-tab="pasta">Pasta & Garnelen</button>
+        <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-fleisch" data-tab="fleisch">Burger & Fleisch</button>
+        <button class="menu-tab" role="tab" aria-selected="false" aria-controls="panel-suesses" data-tab="suesses">Süßes</button>
+      </div>
+
+      <!-- STARTERS & SALATE -->
+      <div class="menu-panel" id="panel-starters" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Kleinigkeiten & Starters</div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Bruschetta klassisch</span><div class="menu-item-dots"></div><span class="menu-item-price">9,90 €</span></div>
+            <p class="menu-item-desc">3 Stück</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Würzfleisch vom Schwein</span><div class="menu-item-dots"></div><span class="menu-item-price">9,90 €</span></div>
+            <p class="menu-item-desc">Mit Käse überbacken</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-2">
+            <div class="menu-item-header"><span class="menu-item-name">Französischer Ofenkäse</span><div class="menu-item-dots"></div><span class="menu-item-price">13,90 €</span></div>
+            <p class="menu-item-desc">Dazu Trauben & Baguette</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-3">
+            <div class="menu-item-header"><span class="menu-item-name">Gebackener Schafskäse</span><div class="menu-item-dots"></div><span class="menu-item-price">12,90 €</span></div>
+            <p class="menu-item-desc">Mit Kirschtomaten & scharfen Peperoni</p>
+          </div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Pimientos de padron</span><div class="menu-item-dots"></div><span class="menu-item-price">12,90 €</span></div>
+            <p class="menu-item-desc">Mit Meersalz, dazu Baguette</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Naschteller "petit"</span><div class="menu-item-dots"></div><span class="menu-item-price">15,90 €</span></div>
+            <p class="menu-item-desc">Mit Serrano, Käsewürfeln, Walnüsse & Trauben</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-2">
+            <div class="menu-item-header"><span class="menu-item-name">Pizzabrötchen & Aioli</span><div class="menu-item-dots"></div><span class="menu-item-price">8,90 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+          <div class="menu-item reveal reveal-delay-3">
+            <div class="menu-item-header"><span class="menu-item-name">Pommes frites</span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+
+          <div class="menu-subheading">Salate</div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Kleiner Salat der Saison</span><div class="menu-item-dots"></div><span class="menu-item-price">7,90 €</span></div>
+            <p class="menu-item-desc">Walnüsse, Parmesan, Baguette</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Großer Salat der Saison</span><div class="menu-item-dots"></div><span class="menu-item-price">12,90 €</span></div>
+            <p class="menu-item-desc">Walnüsse, Parmesan, Baguette</p>
+          </div>
+
+          <div class="menu-subheading">Tapaskartoffeln</div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Tapaskartoffeln</span><div class="menu-item-dots"></div><span class="menu-item-price">10,90 €</span></div>
+            <p class="menu-item-desc">Mit Aioli & Salatbouquet</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Tapaskartoffeln mit Lachs</span><div class="menu-item-dots"></div><span class="menu-item-price">14,90 €</span></div>
+            <p class="menu-item-desc">Mit Räucherlachs, Aioli & Salatbouquet</p>
+          </div>
+
+          <div class="menu-subheading">Wraps</div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Wrap Hähnchen-Teriyaki</span><div class="menu-item-dots"></div><span class="menu-item-price">12,90 €</span></div>
+            <p class="menu-item-desc">Mit Hähnchenteriyaki, Sauercream, Salat, Gurke</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Wrap Räucherlachs</span><div class="menu-item-dots"></div><span class="menu-item-price">16,90 €</span></div>
+            <p class="menu-item-desc">Mit Räucherlachs, Sauercream, Salat, Gurke, Tomate, Wasabimayo</p>
+          </div>
+
+          <div class="menu-subheading">Suppe</div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Hausgemachte Tomatencremesuppe</span><div class="menu-item-dots"></div><span class="menu-item-price">7,90 €</span></div>
+            <p class="menu-item-desc">Dazu Baguette</p>
+          </div>
+          <div class="menu-item" style="pointer-events:none;"></div>
+        </div>
+      </div>
+
+      <!-- PIZZA -->
+      <div class="menu-panel active" id="panel-pizza" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Hausgemachte Pizza <span class="menu-subheading-note">mit originalem Napoliteig</span></div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Margherita</span><div class="menu-item-dots"></div><span class="menu-item-price">10,90 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Salami & schwarze Oliven</span><div class="menu-item-dots"></div><span class="menu-item-price">15,90 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+          <div class="menu-item reveal reveal-delay-2">
+            <div class="menu-item-header"><span class="menu-item-name">Thunfisch & rote Zwiebeln</span><div class="menu-item-dots"></div><span class="menu-item-price">16,90 €</span></div>
+            <p class="menu-item-desc">Mit schwarzen Oliven</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-3">
+            <div class="menu-item-header"><span class="menu-item-name">Rustico</span><div class="menu-item-dots"></div><span class="menu-item-price">15,90 €</span></div>
+            <p class="menu-item-desc">Mit Hackfleisch, Schafskäse, Zwiebeln, Peperoni</p>
+          </div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Garnelen, Knoblauch, Chilli</span><div class="menu-item-dots"></div><span class="menu-item-price">16,90 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Serrano, Rucola, Grana Padano</span><div class="menu-item-dots"></div><span class="menu-item-price">15,90 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PASTA & GARNELEN -->
+      <div class="menu-panel" id="panel-pasta" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Pasta <span class="menu-subheading-note">wahlweise Spaghetti oder Bandnudeln</span></div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Bolognese vom Rind</span><div class="menu-item-dots"></div><span class="menu-item-price">18,90 €</span></div>
+            <p class="menu-item-desc">Mit Grana Padano & Rucola</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Arrabiata</span><div class="menu-item-dots"></div><span class="menu-item-price">16,90 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+          <div class="menu-item reveal reveal-delay-2">
+            <div class="menu-item-header"><span class="menu-item-name">Knoblauch-Pesto mit Trüffelöl</span><div class="menu-item-dots"></div><span class="menu-item-price">16,90 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+          <div class="menu-item reveal reveal-delay-3">
+            <div class="menu-item-header"><span class="menu-item-name">Basilikumpesto</span><div class="menu-item-dots"></div><span class="menu-item-price">16,90 €</span></div>
+            <p class="menu-item-desc"></p>
+          </div>
+          <div class="menu-subheading">Garnelen</div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Garnelen</span><div class="menu-item-dots"></div><span class="menu-item-price">16,90 €</span></div>
+            <p class="menu-item-desc">Dazu Aioli, Salatbouquet und hausgebackenes Baguette</p>
+          </div>
+          <div class="menu-item" style="pointer-events:none;"></div>
+        </div>
+      </div>
+
+      <!-- BURGER & FLEISCH -->
+      <div class="menu-panel" id="panel-fleisch" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Burger vom Lavasteingrill <span class="menu-subheading-note">wahlweise mit Pommes oder Tapaskartoffeln</span></div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Surf & Turf</span><div class="menu-item-dots"></div><span class="menu-item-price">21,90 €</span></div>
+            <p class="menu-item-desc">Rinderpatty hausgemacht, 3 Garnelen, Grana Padano</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Jack Daniels Burger</span><div class="menu-item-dots"></div><span class="menu-item-price">19,90 €</span></div>
+            <p class="menu-item-desc">Rinderpatty hausgemacht, Jack Daniels Soße, Cheddar</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-2">
+            <div class="menu-item-header"><span class="menu-item-name">Chicken Burger</span><div class="menu-item-dots"></div><span class="menu-item-price">19,90 €</span></div>
+            <p class="menu-item-desc">Hühnchenbrust, Jalapeños, Cheddar</p>
+          </div>
+          <div class="menu-item" style="pointer-events:none;"></div>
+
+          <div class="menu-subheading">Fleisch</div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Currywurst vom Lavasteingrill</span><div class="menu-item-dots"></div><span class="menu-item-price">9,90 €</span></div>
+            <p class="menu-item-desc">Hauseigene Currysoße, dazu Pommes</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Hüftsteak vom Lavasteingrill</span><div class="menu-item-dots"></div><span class="menu-item-price">25,90 €</span></div>
+            <p class="menu-item-desc">Mit Kräuterbutter & Bratkartoffeln</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-2">
+            <div class="menu-item-header"><span class="menu-item-name">Steak au four vom Schwein</span><div class="menu-item-dots"></div><span class="menu-item-price">22,90 €</span></div>
+            <p class="menu-item-desc">Überbacken, dazu Pommes</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-3">
+            <div class="menu-item-header"><span class="menu-item-name">"Hamburger Schnitzel"</span><div class="menu-item-dots"></div><span class="menu-item-price">19,90 €</span></div>
+            <p class="menu-item-desc">Mit Spiegelei, dazu Bratkartoffeln</p>
+          </div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">"Schnitzel Italiano"</span><div class="menu-item-dots"></div><span class="menu-item-price">19,90 €</span></div>
+            <p class="menu-item-desc">Mit Tomate-Mozzarella überbacken, dazu Bandnudeln</p>
+          </div>
+          <div class="menu-item" style="pointer-events:none;"></div>
+        </div>
+      </div>
+
+      <!-- SÜSSES -->
+      <div class="menu-panel" id="panel-suesses" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Süßes</div>
+          <div class="menu-item reveal">
+            <div class="menu-item-header"><span class="menu-item-name">Himbeertiramisu</span><div class="menu-item-dots"></div><span class="menu-item-price">7,90 €</span></div>
+            <p class="menu-item-desc">Hausgemacht</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-1">
+            <div class="menu-item-header"><span class="menu-item-name">Schokoladensouffle</span><div class="menu-item-dots"></div><span class="menu-item-price">9,90 €</span></div>
+            <p class="menu-item-desc">Dazu Vanilleeis</p>
+          </div>
+          <div class="menu-item reveal reveal-delay-2">
+            <div class="menu-item-header"><span class="menu-item-name">Vanilleeis</span><div class="menu-item-dots"></div><span class="menu-item-price">7,00 €</span></div>
+            <p class="menu-item-desc">2 Kugeln, dazu heiße Himbeeren & Sahne</p>
+          </div>
+          <div class="menu-item" style="pointer-events:none;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GETRÄNKEKARTE -->
+  <section id="wine" aria-labelledby="wine-heading">
+    <div class="section-inner">
+      <div class="menu-header">
+        <div class="green-divider reveal" style="justify-content:center;">
+          <div class="green-divider-line" style="max-width:80px;background:linear-gradient(to right,transparent,rgba(250,249,246,0.2));"></div>
+          <div class="green-divider-ornament" style="border-color:rgba(250,249,246,0.5);"></div>
+          <div class="green-divider-line right" style="max-width:80px;background:linear-gradient(to left,transparent,rgba(250,249,246,0.2));"></div>
+        </div>
+        <span class="section-label reveal">Getränke</span>
+        <h2 class="section-title reveal reveal-delay-1" id="wine-heading">Getränke<em>karte</em></h2>
+      </div>
+
+      <div class="menu-tabs reveal reveal-delay-2" role="tablist">
+        <button class="menu-tab active" role="tab" aria-selected="true" data-tab="gweine" aria-controls="panel-gweine">Weine</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-tab="gbier" aria-controls="panel-gbier">Bier</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-tab="gcocktails" aria-controls="panel-gcocktails">Cocktails & Longdrinks</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-tab="gheiss" aria-controls="panel-gheiss">Heiße Getränke</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-tab="galkfrei" aria-controls="panel-galkfrei">Alkoholfreies</button>
+        <button class="menu-tab" role="tab" aria-selected="false" data-tab="gshots" aria-controls="panel-gshots">Shots</button>
+      </div>
+
+      <!-- WEINE -->
+      <div class="menu-panel active" id="panel-gweine" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Weißwein & Spritziges</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Frizzante DOC Frivolo</span><div class="menu-item-dots"></div><span class="menu-item-price">0,75 l · 29,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Frivolo Bianco silver</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l · 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Pinot Grigio Campagnola</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 1,0 l 26,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Weissburgunder halbtrocken, Baden</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 0,75 l 24,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Chardonnay del Veneto</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 1,0 l 26,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Weinschorle</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l · 6,10 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Lugana DOC La Rifra</span><div class="menu-item-dots"></div><span class="menu-item-price">0,75 l · 33,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Blanc de noir Weingut Hartmann</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 0,75 l 24,00 €</span></div></div>
+          <div class="menu-subheading">Rotwein & Rosé</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Cabernet Sauvignon Weingut Hartmann</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 0,75 l 24,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Rosé Pfalz Weingut Hartmann</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 1,0 l 26,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">El Coto, Rioja, Spanien</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 0,75 l 24,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Primitivo di Manduria, Italien, trocken</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 0,75 l 24,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Les Rivages Merlot</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 1,0 l 26,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Obello lieblich</span><div class="menu-item-dots"></div><span class="menu-item-price">0,1 l 3,80 · 0,2 l 6,80 · 0,75 l 24,00 €</span></div></div>
+        </div>
+      </div>
+
+      <!-- BIER -->
+      <div class="menu-panel" id="panel-gbier" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Fassbier</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Jever</span><div class="menu-item-dots"></div><span class="menu-item-price">0,3 l 3,50 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Rupp Bräu dunkel</span><div class="menu-item-dots"></div><span class="menu-item-price">0,3 l 4,00 · 0,5 l 6,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Rupp Bräu hell</span><div class="menu-item-dots"></div><span class="menu-item-price">0,3 l 3,80 · 0,5 l 5,70 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Budweiser</span><div class="menu-item-dots"></div><span class="menu-item-price">0,3 l 3,80 · 0,4 l 5,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Bitburger</span><div class="menu-item-dots"></div><span class="menu-item-price">0,3 l 3,50 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Benediktiner hell</span><div class="menu-item-dots"></div><span class="menu-item-price">0,3 l 3,80 · 0,5 l 5,70 €</span></div></div>
+          <div class="menu-subheading">Flaschenbier</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Franziskaner Weizen naturtrüb o. dunkel</span><div class="menu-item-dots"></div><span class="menu-item-price">0,5 l · 5,30 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Benediktiner Weizen naturtrüb o. alkoholfrei</span><div class="menu-item-dots"></div><span class="menu-item-price">0,5 l · 5,30 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Paulaner Zitrone alkoholfrei</span><div class="menu-item-dots"></div><span class="menu-item-price">0,5 l · 5,30 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Schöfferhofer Grapefruit</span><div class="menu-item-dots"></div><span class="menu-item-price">0,33 l · 3,80 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Bitburger Drive alkoholfrei</span><div class="menu-item-dots"></div><span class="menu-item-price">0,33 l · 3,80 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Jever Fun alkoholfrei</span><div class="menu-item-dots"></div><span class="menu-item-price">0,33 l · 3,80 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Berliner Weiße Himbeere oder Waldmeister</span><div class="menu-item-dots"></div><span class="menu-item-price">0,33 l · 4,50 €</span></div></div>
+        </div>
+      </div>
+
+      <!-- COCKTAILS & LONGDRINKS -->
+      <div class="menu-panel" id="panel-gcocktails" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Cocktails alkoholfrei</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Ipanema</span><div class="menu-item-dots"></div><span class="menu-item-price">7,00 €</span></div><p class="menu-item-desc">Limetten, brauner Zucker, Ginger Ale, Maracuja</p></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Drachenblut</span><div class="menu-item-dots"></div><span class="menu-item-price">7,00 €</span></div><p class="menu-item-desc">Kirschsaft, Maracujasaft, Limesirup, Zuckersirup</p></div>
+          <div class="menu-subheading">Cocktails mit Alkohol</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Caipirinha</span><div class="menu-item-dots"></div><span class="menu-item-price">8,00 €</span></div><p class="menu-item-desc">Limetten, brauner Zucker, Cachaça</p></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Mojito</span><div class="menu-item-dots"></div><span class="menu-item-price">8,00 €</span></div><p class="menu-item-desc">Limetten, Havanna, Minze, Soda</p></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Cuba Libre</span><div class="menu-item-dots"></div><span class="menu-item-price">8,00 €</span></div><p class="menu-item-desc">Limetten, Havanna, Cola</p></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Espresso Martini</span><div class="menu-item-dots"></div><span class="menu-item-price">8,00 €</span></div><p class="menu-item-desc">Espresso, Wodka, Kaffeelikör</p></div>
+          <div class="menu-subheading">Longdrinks</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Aperol Spritz</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Limoncello Spritz</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Hugo</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Birnen-Hugo mit Ingwer</span><div class="menu-item-dots"></div><span class="menu-item-price">8,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Lillet Wild Berry</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Bacardi-Cola</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Jack Daniels Cola</span><div class="menu-item-dots"></div><span class="menu-item-price">8,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Jim Beam Cola</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Wodka Energy</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Wodka Rhabarber</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Wodka Lemon</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Gin Bombay Tonic</span><div class="menu-item-dots"></div><span class="menu-item-price">7,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Gin Hendricks mit GOLDBERG Tonic</span><div class="menu-item-dots"></div><span class="menu-item-price">10,00 €</span></div></div>
+        </div>
+      </div>
+
+      <!-- HEISSE GETRÄNKE -->
+      <div class="menu-panel" id="panel-gheiss" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Heiße Getränke</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Pott Kaffee</span><div class="menu-item-dots"></div><span class="menu-item-price">3,80 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Tasse Kaffee</span><div class="menu-item-dots"></div><span class="menu-item-price">3,30 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Cafe au lait</span><div class="menu-item-dots"></div><span class="menu-item-price">4,40 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Cappuccino</span><div class="menu-item-dots"></div><span class="menu-item-price">4,40 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Espresso</span><div class="menu-item-dots"></div><span class="menu-item-price">3,20 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Doppelter Espresso</span><div class="menu-item-dots"></div><span class="menu-item-price">4,80 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Latte Macchiato</span><div class="menu-item-dots"></div><span class="menu-item-price">4,40 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Affogato al Caffé</span><div class="menu-item-dots"></div><span class="menu-item-price">5,20 €</span></div><p class="menu-item-desc">Vanilleeis, Amaretto, Espresso</p></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Heiße Schokolade</span><div class="menu-item-dots"></div><span class="menu-item-price">4,30 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Heiße Schokolade mit Sahne</span><div class="menu-item-dots"></div><span class="menu-item-price">4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Glühwein rot</span><div class="menu-item-dots"></div><span class="menu-item-price">4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Glühwein rot mit Schuss</span><div class="menu-item-dots"></div><span class="menu-item-price">5,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Glühwein weiß</span><div class="menu-item-dots"></div><span class="menu-item-price">4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Glühwein weiß mit Schuss</span><div class="menu-item-dots"></div><span class="menu-item-price">5,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Tee</span><div class="menu-item-dots"></div><span class="menu-item-price">3,80 €</span></div><p class="menu-item-desc">Pfefferminz, Roiboos, Früchte, schwarzer Tee</p></div>
+        </div>
+      </div>
+
+      <!-- ALKOHOLFREIES -->
+      <div class="menu-panel" id="panel-galkfrei" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Wasser & Softdrinks</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Pellegrino</span><div class="menu-item-dots"></div><span class="menu-item-price">0,25 l 3,00 · 0,75 l 8,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Pellegrino Panna</span><div class="menu-item-dots"></div><span class="menu-item-price">0,25 l 3,00 · 0,75 l 8,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Coca Cola</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,60 · 0,4 l 4,60 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Cola zero</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,60 · 0,4 l 4,60 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Fanta / Sprite / Spezi</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,60 · 0,4 l 4,60 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Eistee</span><div class="menu-item-dots"></div><span class="menu-item-price">0,33 l · 3,80 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Bionade</span><div class="menu-item-dots"></div><span class="menu-item-price">0,33 l · 3,80 €</span></div></div>
+          <div class="menu-subheading">GOLDBERG Premiums</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Ginger Ale</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l · 3,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Bitter Lemon</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l · 3,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Wild Berry</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l · 3,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Tonic</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l · 3,50 €</span></div></div>
+          <div class="menu-subheading">Säfte & Schorlen</div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Apfelsaft naturtrüb</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,30 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Maracujasaft</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,30 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Johannisbeersaft</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,30 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Cranberrysaft</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,30 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Rhabarbersaft</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,30 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Orangensaft</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,30 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Ananassaft</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,30 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Saftschorle</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,20 · 0,4 l 4,20 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Kiba</span><div class="menu-item-dots"></div><span class="menu-item-price">0,2 l 2,30 · 0,4 l 4,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Johannisbeer-Tonic</span><div class="menu-item-dots"></div><span class="menu-item-price">0,4 l · 5,40 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Homemade Lemonade</span><div class="menu-item-dots"></div><span class="menu-item-price">0,4 l · 5,40 €</span></div><p class="menu-item-desc">Limette · Johannisbeere · Himbeere/Maracuja · Rhabarber</p></div>
+        </div>
+      </div>
+
+      <!-- SHOTS -->
+      <div class="menu-panel" id="panel-gshots" role="tabpanel">
+        <div class="menu-grid">
+          <div class="menu-subheading">Schnäpse & Liköre <span class="menu-subheading-note">je 2 cl</span></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Prinz Alte Marille <span class="mi-detail">41%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Prinz Alte Haselnuss <span class="mi-detail">41%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Prinz Hausschnaps Marille <span class="mi-detail">34%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Prinz Williams Christbirnenschnaps <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Wodka-Pfirsich, hausgemacht <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Willi-Birne <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Hierbas secas trocken <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,10 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Hierbas mezcladas medium <span class="mi-detail">30%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,10 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Obstbrand Apfel/Birne <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Scavi & Ray Grappa Bianca <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Etter Alter Apfel Barrique <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">6,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Ramazotti <span class="mi-detail">30%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,10 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Averna <span class="mi-detail">34%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,10 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Branca Menta <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,60 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Fernet Branca <span class="mi-detail">42%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,60 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Limoncello <span class="mi-detail">29%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Jägermeister <span class="mi-detail">35%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,50 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Wodka Three Sixty <span class="mi-detail">37,5%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Baileys <span class="mi-detail">17% · 4 cl</span></span><div class="menu-item-dots"></div><span class="menu-item-price">5,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Gin Bombay <span class="mi-detail">37,5%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Gin Hendricks <span class="mi-detail">44%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">7,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Tequila gold <span class="mi-detail">38%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Tequila silver <span class="mi-detail">38%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Helbing <span class="mi-detail">35%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Jubi <span class="mi-detail">41%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Linie <span class="mi-detail">41,5%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Korn <span class="mi-detail">32%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Malteser <span class="mi-detail">41%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Ouzo <span class="mi-detail">38%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Meyers Bitter <span class="mi-detail">38%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Roter Likör <span class="mi-detail">15%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Asbach Uralt <span class="mi-detail">35%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Chantre <span class="mi-detail">36%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Sambuca <span class="mi-detail">40%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">4,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Kümmerling <span class="mi-detail">35%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Underberg <span class="mi-detail">44%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item"><div class="menu-item-header"><span class="menu-item-name">Wacholder <span class="mi-detail">32%</span></span><div class="menu-item-dots"></div><span class="menu-item-price">3,00 €</span></div></div>
+          <div class="menu-item" style="grid-column:1/-1;padding:12px 32px;font-style:italic;">Whiskey auf Anfrage</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RÄUMLICHKEITEN -->
+  <section id="rooms" aria-labelledby="rooms-heading">
+    <div class="section-inner">
+      <div class="rooms-header">
+        <div class="green-divider reveal" style="justify-content:center;">
+          <div class="green-divider-line" style="max-width:80px;"></div>
+          <div class="green-divider-ornament"></div>
+          <div class="green-divider-line right" style="max-width:80px;"></div>
+        </div>
+        <span class="section-label reveal">Private Räumlichkeiten</span>
+        <h2 class="section-title reveal reveal-delay-1" id="rooms-heading" style="text-align:center;">
+          Ihr exklusiver<br><em>Rahmen für jeden Anlass</em>
+        </h2>
+      </div>
+
+      <div class="rooms-grid">
+
+        <!-- SIDE BISTRO -->
+        <div class="room-card reveal">
+          <div class="room-card-top room-photo-trigger"
+               data-srcs='["side_1.png","side_2.png","side_3.png","side_4.png","side_5.png","side_6.png"]'>
+            <img src="side_2.png" class="room-photo-cover" alt="Bistro Side">
+            <div class="room-photo-view-hint"><span>Alle Fotos ansehen</span></div>
+            <div class="room-slide-overlay">
+              <div class="room-capacity-badge">Bis zu <strong>40</strong> Gäste</div>
+            </div>
+          </div>
+          <div class="room-card-body">
+            <span class="room-tag">Großveranstaltungen & Feiern</span>
+            <h3 class="room-title">Das <em>Bistro Side</em></h3>
+            <p class="room-desc">
+              Unser großzügiger Nebenraum bietet den perfekten Rahmen für Feiern in großer Runde – ob Firmenjubiläum, Familienfeier, politischer Empfang oder festliches Bankett. Mit individuellem Buffet oder mehrgängigem Menü gestalten wir Ihren Abend nach Maß.
+            </p>
+            <ul class="room-features">
+              <li>Kapazität für Gruppen bis zu 40 Personen</li>
+              <li>Buffet, Stehempfang oder gesetztes Menü – alles möglich</li>
+              <li>Eigener Eingang und separater Servicebereich</li>
+              <li>Technik für Präsentationen & Redner auf Anfrage</li>
+              <li>Gern genutzt für politische Empfänge & offizielle Anlässe</li>
+            </ul>
+            <div class="room-divider"></div>
+            <div class="room-note">
+              Für Anfragen und individuelle Angebote sprechen Sie uns direkt an – wir planen gemeinsam mit Ihnen.
+            </div>
+            <br />
+            <a href="#reservation" class="room-cta">Bistro Side anfragen</a>
+          </div>
+        </div>
+
+        <!-- BISTRO TOP -->
+        <div class="room-card reveal reveal-delay-2">
+          <div class="room-card-top room-photo-trigger"
+               data-srcs='["pokerzimmer_1.png","pokerzimmer_2.png","pokerzimmer_3.png","pokerzimmer_4.png"]'>
+            <img src="pokerzimmer_1.png" class="room-photo-cover" alt="Bistro Top">
+            <div class="room-photo-view-hint"><span>Alle Fotos ansehen</span></div>
+            <div class="room-slide-overlay">
+              <div class="room-capacity-badge">Bis zu <strong>12</strong> Gäste</div>
+            </div>
+          </div>
+          <div class="room-card-body">
+            <span class="room-tag">Exklusiv & Intim</span>
+            <h3 class="room-title">Das <em>Bistro Top</em></h3>
+            <p class="room-desc">
+              Unser kleinstes und intimstes Zimmer ist das Juwel des Hauses. Perfekt für kleine, exklusive Runden: ein privates Dinner, ein Geschäftsabend unter Vertrauten oder ein unvergesslicher Spielabend mit besten Freunden.
+            </p>
+            <ul class="room-features">
+              <li>Bis zu 12 Personen – absolut exklusiv & privat</li>
+              <li>Eigenes Menü oder Snack-Auswahl nach Wunsch</li>
+              <li>Ideal für Geschäftsessen, Geburtstagsrunden & Spielabende</li>
+              <li>Stilvolles Ambiente für besondere Anlässe</li>
+            </ul>
+            <div class="room-divider"></div>
+            <div class="room-note">
+              Das Zimmer wird exklusiv reserviert – Ihre Runde hat den Raum ganz für sich allein.
+            </div>
+            <br />
+            <a href="#reservation" class="room-cta">Bistro Top anfragen</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FERIENWOHNUNG -->
+  <section id="apartment" aria-labelledby="apt-heading">
+    <div class="section-inner">
+
+      <!-- 1. Überschrift -->
+      <div class="apt-header reveal" style="text-align:center;margin-bottom:48px;">
+        <div class="green-divider" style="justify-content:center;margin-bottom:18px;">
+          <div class="green-divider-line" style="max-width:80px;background:linear-gradient(to right,transparent,rgba(250,249,246,0.2));"></div>
+          <div class="green-divider-ornament" style="border-color:rgba(250,249,246,0.5);"></div>
+          <div class="green-divider-line right" style="max-width:80px;background:linear-gradient(to left,transparent,rgba(250,249,246,0.2));"></div>
+        </div>
+        <span class="section-label" style="color:rgba(250,249,246,0.5);">Übernachten im Le Bistro</span>
+        <h2 class="section-title reveal reveal-delay-1" id="apt-heading" style="color:var(--white);">
+          Wohnen, wo<br><em style="color:rgba(250,249,246,0.65);">Bückeburg speist</em>
+        </h2>
+        <p class="reveal reveal-delay-2" style="max-width:560px;margin:20px auto 0;font-size:0.9rem;line-height:1.9;color:rgba(250,249,246,0.55);">
+          Direkt über dem Restaurant liegt unsere großzügige Ferienwohnung im zweiten Obergeschoss. Ob Kurzurlaub, Familienausflug oder Geschäftsreise – zentral, komfortabel, mit dem Le Bistro direkt vor der Haustür.
+        </p>
+      </div>
+
+      <!-- 2. Gallery4 -->
+      <div class="apt-gallery4 reveal" style="margin-top:0;">
+        <div class="g4-tabs" role="tablist">
+          <button class="g4-tab active" data-cat="all">Alle</button>
+          <button class="g4-tab" data-cat="wohnzimmer">Wohnzimmer</button>
+          <button class="g4-tab" data-cat="kueche">Küche</button>
+          <button class="g4-tab" data-cat="bad">Bad</button>
+          <button class="g4-tab" data-cat="sz1">Schlafzimmer 1</button>
+          <button class="g4-tab" data-cat="sz2">Schlafzimmer 2</button>
+          <button class="g4-tab" data-cat="sz3">Schlafzimmer 3</button>
+          <button class="g4-tab" data-cat="sonstige">Flur &amp; Aussicht</button>
+        </div>
+        <div class="g4-carousel">
+          <button class="g4-arrow g4-arrow-prev" id="g4Prev" aria-label="Zurück">&#8249;</button>
+          <div class="g4-track" id="g4Track">
+            <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_1.png"><img src="wohnzimmer_1.png" alt="Wohnzimmer"></div>
+            <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_2.png"><img src="wohnzimmer_2.png" alt="Wohnzimmer"></div>
+            <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_3.png"><img src="wohnzimmer_3.png" alt="Wohnzimmer"></div>
+            <div class="g4-card" data-cat="all kueche" data-src="küche_1.png"><img src="küche_1.png" alt="Küche"></div>
+            <div class="g4-card" data-cat="all kueche" data-src="küche_2.png"><img src="küche_2.png" alt="Küche"></div>
+            <div class="g4-card" data-cat="all kueche" data-src="küche_3.png"><img src="küche_3.png" alt="Küche"></div>
+            <div class="g4-card" data-cat="all kueche" data-src="küche-4.jpeg"><img src="küche-4.jpeg" alt="Küche"></div>
+            <div class="g4-card" data-cat="all bad" data-src="bad_1.png"><img src="bad_1.png" alt="Bad"></div>
+            <div class="g4-card" data-cat="all bad" data-src="bad_2.png"><img src="bad_2.png" alt="Bad"></div>
+            <div class="g4-card" data-cat="all bad" data-src="bad_3.jpeg"><img src="bad_3.jpeg" alt="Bad"></div>
+            <div class="g4-card" data-cat="all bad" data-src="bad_4.jpeg"><img src="bad_4.jpeg" alt="Bad"></div>
+            <div class="g4-card" data-cat="all sz1" data-src="grosses_zimmer_wohnung_bestes.png"><img src="grosses_zimmer_wohnung_bestes.png" alt="Schlafzimmer 1"></div>
+            <div class="g4-card" data-cat="all sz1" data-src="grosses_zimmer_wohnung.png"><img src="grosses_zimmer_wohnung.png" alt="Schlafzimmer 1"></div>
+            <div class="g4-card" data-cat="all sz3" data-src="schrank_zimmer1.png"><img src="schrank_zimmer1.png" alt="Schlafzimmer 3"></div>
+            <div class="g4-card" data-cat="all sz2" data-src="kleines_zimmer_wohnung.png"><img src="kleines_zimmer_wohnung.png" alt="Schlafzimmer 2"></div>
+            <div class="g4-card" data-cat="all sz2" data-src="kleines_sofa_wohnung.png"><img src="kleines_sofa_wohnung.png" alt="Schlafzimmer 2"></div>
+            <div class="g4-card" data-cat="all sz3" data-src="wohnung_zimmer_1.png"><img src="wohnung_zimmer_1.png" alt="Schlafzimmer 3"></div>
+            <div class="g4-card" data-cat="all sonstige" data-src="gang_wohnung.png"><img src="gang_wohnung.png" alt="Flur"></div>
+            <div class="g4-card" data-cat="all sonstige" data-src="aussicht_wohnung.png"><img src="aussicht_wohnung.png" alt="Aussicht"></div>
+          </div>
+          <button class="g4-arrow g4-arrow-next" id="g4Next" aria-label="Weiter">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- 3. Info-Leiste -->
+      <div class="apt-infobar reveal">
+        <div class="apt-amenities">
+          <div class="apt-amenity"><span class="apt-amenity-icon">🛏</span><span>3 Schlafzimmer, 5 Betten</span></div>
+          <div class="apt-amenity"><span class="apt-amenity-icon">🚿</span><span>Badezimmer mit Dusche</span></div>
+          <div class="apt-amenity"><span class="apt-amenity-icon">🍳</span><span>Voll ausgestattete Küche</span></div>
+          <div class="apt-amenity"><span class="apt-amenity-icon">🫧</span><span>Waschmaschine</span></div>
+          <div class="apt-amenity"><span class="apt-amenity-icon">📺</span><span>Flachbildschirm & Netflix</span></div>
+          <div class="apt-amenity"><span class="apt-amenity-icon">📍</span><span>Zentrale Lage, Lange Str.</span></div>
+        </div>
+        <div class="apt-infobar-right">
+          <div class="apt-price-card">
+            <div class="apt-price-val">150 €</div>
+            <div class="apt-price-unit">pro Nacht</div>
+            <div class="apt-minstay">Min. 2 Nächte</div>
+          </div>
+          <a href="https://wa.me/4915735688661" target="_blank" rel="noopener"
+             class="apt-whatsapp-btn" style="width:100%;justify-content:center;"
+             aria-label="WhatsApp Buchungsanfrage">
+            <span class="apt-whatsapp-icon">💬</span>
+            01573 56 88661
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SPORTSBAR -->
+  <section id="sportsbar" aria-labelledby="sportsbar-heading">
+    <div class="sportsbar-inner">
+
+      <!-- Linke Seite: Bildschirm-Visual -->
+      <div class="sportsbar-visual reveal">
+        <div class="sportsbar-screen">
+          <div class="sportsbar-screen-content">
+            <div style="display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:4px;">
+              <div class="screen-logo-dazn">MagentaTV</div>
+              <div style="width:1px;height:22px;background:rgba(250,249,246,0.2);"></div>
+              <div class="screen-logo-dazn">DAZN</div>
+            </div>
+            <div class="screen-live-badge">Live</div>
+            <div class="screen-events">
+              <div class="screen-event">FIFA Weltmeisterschaft</div>
+              <div class="screen-event">UEFA Champions League</div>
+              <div class="screen-event">Bundesliga · Premier League</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Rechte Seite: Text -->
+      <div class="sportsbar-text">
+        <div class="green-divider reveal" style="--green-border:rgba(250,249,246,0.12);">
+          <div class="green-divider-line" style="background:linear-gradient(to right,transparent,rgba(250,249,246,0.12));"></div>
+          <div class="green-divider-ornament" style="border-color:rgba(250,249,246,0.35);"></div>
+          <div class="green-divider-line right" style="background:linear-gradient(to left,transparent,rgba(250,249,246,0.12));"></div>
+        </div>
+        <span class="section-label reveal">Sports & Bar</span>
+        <h2 class="section-title reveal reveal-delay-1" id="sportsbar-heading">
+          Live Sport.<br><em>Bestes Ambiente.</em>
+        </h2>
+        <p class="sportsbar-desc reveal reveal-delay-2">
+          Das Le Bistro ist nicht nur Restaurant und Weinbar – bei uns laufen die großen Spiele auf dem Bildschirm. Champions League, Bundesliga, Weltmeisterschaft: Erleben Sie die großen Momente mit der besten Atmosphäre in Bückeburg – und dazu einen kühlen Drink oder ein feines Gericht.
+        </p>
+
+        <div class="sportsbar-events reveal reveal-delay-3">
+          <div class="sportsbar-event">
+            <span class="event-icon">🏆</span>
+            <div class="event-info">
+              <div class="event-name">UEFA Champions League</div>
+              <div class="event-detail">Alle Gruppenspiele & KO-Runden live</div>
+            </div>
+            <span class="event-provider">DAZN</span>
+          </div>
+          <div class="sportsbar-event">
+            <span class="event-icon">🌍</span>
+            <div class="event-info">
+              <div class="event-name">FIFA Weltmeisterschaft</div>
+              <div class="event-detail">Jedes Spiel – von der Gruppenphase bis zum Finale</div>
+            </div>
+            <span class="event-provider">MagentaTV</span>
+          </div>
+          <div class="sportsbar-event">
+            <span class="event-icon">⚽</span>
+            <div class="event-info">
+              <div class="event-name">Bundesliga & internationale Ligen</div>
+              <div class="event-detail">Premier League, La Liga, Serie A & mehr</div>
+            </div>
+            <span class="event-provider">DAZN</span>
+          </div>
+        </div>
+
+        <p class="sportsbar-note reveal reveal-delay-4">
+          Für große Spiele und Turniere können Sie unsere Räumlichkeiten auch exklusiv reservieren – ideal für Gruppen, die gemeinsam mitfiebern möchten.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section id="reservation" aria-labelledby="res-heading">
+    <div class="section-inner">
+      <div class="reservation-layout">
+        <div class="reservation-info">
+          <div class="green-divider reveal">
+            <div class="green-divider-line"></div>
+            <div class="green-divider-ornament"></div>
+            <div class="green-divider-line right"></div>
+          </div>
+          <span class="section-label reveal">Tisch reservieren</span>
+          <h2 class="section-title reveal reveal-delay-1" id="res-heading">
+            Wir erwarten<br><em>Sie</em>
+          </h2>
+          <p class="res-body reveal reveal-delay-2">
+            Reservieren Sie Ihren Tisch und lassen Sie uns einen unvergesslichen Abend für Sie gestalten. Für besondere Anlässe und Gruppen ab 8 Personen stehen wir Ihnen gerne persönlich zur Verfügung.
+          </p>
+          <div class="opening-times reveal reveal-delay-3">
+            <div class="ot-label">Öffnungszeiten</div>
+            <div class="ot-row"><span>Dienstag – Sonntag</span><span class="ot-time">ab 12:00 Uhr</span></div>
+            <div class="ot-row"><span>Küche</span><span class="ot-time">12:00 – 21:00 Uhr</span></div>
+            <div class="ot-row"><span>Montag</span><span class="ot-time">Ruhetag</span></div>
+          </div>
+        </div>
+        <div class="res-form reveal reveal-delay-2">
+          <div class="form-title">Reservierungsanfrage</div>
+          <form action="#" method="post" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="vorname">Vorname</label>
+                <input class="form-input" type="text" id="vorname" name="vorname" placeholder="Marie" required autocomplete="given-name" />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="nachname">Nachname</label>
+                <input class="form-input" type="text" id="nachname" name="nachname" placeholder="Dupont" required autocomplete="family-name" />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="datum">Datum</label>
+                <input class="form-input" type="date" id="datum" name="datum" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="uhrzeit">Uhrzeit</label>
+                <select class="form-select" id="uhrzeit" name="uhrzeit" required>
+                  <option value="">Bitte wählen</option>
+                  <option>12:00</option><option>12:30</option>
+                  <option>13:00</option><option>13:30</option>
+                  <option>18:00</option><option>18:30</option>
+                  <option>19:00</option><option>19:30</option>
+                  <option>20:00</option><option>20:30</option>
+                  <option>21:00</option><option>21:30</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="personen">Personen</label>
+                <select class="form-select" id="personen" name="personen" required>
+                  <option value="">Anzahl</option>
+                  <option>1</option><option>2</option><option>3</option>
+                  <option>4</option><option>5</option><option>6</option><option>7+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="telefon">Telefon</label>
+                <input class="form-input" type="tel" id="telefon" name="telefon" placeholder="+49 57 22 …" autocomplete="tel" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">E-Mail</label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="ihre@email.de" required autocomplete="email" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="wuensche">Besondere Wünsche</label>
+              <textarea class="form-textarea" id="wuensche" name="wuensche" placeholder="Allergien, Anlässe, Sonderwünsche …"></textarea>
+            </div>
+            <button type="submit" class="form-submit">Anfrage senden</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact" role="contentinfo">
+    <div class="section-inner">
+      <div class="contact-top">
+        <div class="reveal">
+          <div class="footer-logo-wrap">
+            <img src="logo.png" alt="Le Bistro" style="height:50px;width:auto;display:block;" />
+          </div>
+          <div class="footer-tagline">Restaurant · Wine · Bar</div>
+          <p class="footer-brand-body">
+            Ein Ort, an dem Zeit vergeht, ohne dass man es bemerkt. Im Herzen von Bückeburg, am Puls des Augenblicks.
+          </p>
+        </div>
+        <div class="reveal reveal-delay-1">
+          <div class="contact-col-title">Adresse & Kontakt</div>
+          <ul class="contact-list">
+            <li>Lange Str. 10–11<br>31675 Bückeburg</li>
+            <li><a href="mailto:info@lebistro.de">info@lebistro.de</a></li>
+          </ul>
+        </div>
+        <div class="reveal reveal-delay-2">
+          <div class="contact-col-title">Navigation</div>
+          <ul class="contact-list">
+            <li><a href="#about">Unsere Geschichte</a></li>
+            <li><a href="#menu">Speisekarte</a></li>
+            <li><a href="#wine">Getränkekarte</a></li>
+            <li><a href="#rooms">Räumlichkeiten</a></li>
+            <li><a href="#apartment">Ferienwohnung</a></li>
+            <li><a href="#sportsbar">Sportsbar</a></li>
+            <li><a href="#reservation">Reservierung</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Le Bistro Bückeburg. Alle Rechte vorbehalten.</p>
+        <div class="footer-legal">
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Bildergalerie">
+    <div id="lightboxBackdrop"></div>
+    <button id="lightboxClose" aria-label="Schließen">✕</button>
+    <button id="lightboxPrev" aria-label="Vorheriges Bild">&#8249;</button>
+    <button id="lightboxNext" aria-label="Nächstes Bild">&#8250;</button>
+    <div id="lightboxImgWrap"><img id="lightboxImg" src="" alt=""></div>
+    <div id="lightboxCounter"></div>
+  </div>
+
+  <script>
+
+    // Scroll progress
+    const bar = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      bar.style.transform = `scaleX(${window.scrollY / (document.body.scrollHeight - window.innerHeight)})`;
+    }, { passive: true });
+
+    // Nav scroll
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // Mobile menu
+    const mobileMenu = document.getElementById('mobileMenu');
+    const hamburger  = document.getElementById('hamburger');
+    document.getElementById('mobileClose').addEventListener('click', () => mobileMenu.classList.remove('open'));
+    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+    hamburger.addEventListener('keydown', e => { if (e.key === 'Enter') mobileMenu.classList.add('open'); });
+    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Menu tabs — scoped per section so both menus are independent
+    document.querySelectorAll('.menu-tabs').forEach(tabset => {
+      const tabs   = Array.from(tabset.querySelectorAll('.menu-tab'));
+      const inner  = tabset.closest('.section-inner');
+      const panels = inner ? Array.from(inner.querySelectorAll('.menu-panel')) : [];
+
+      // ensure first tab + panel start active
+      if (tabs.length && !tabs.some(t => t.classList.contains('active'))) {
+        tabs[0].classList.add('active');
+        tabs[0].setAttribute('aria-selected', 'true');
+      }
+      if (panels.length && !panels.some(p => p.classList.contains('active'))) {
+        panels[0].classList.add('active');
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+          panels.forEach(p => p.classList.remove('active'));
+          tab.classList.add('active'); tab.setAttribute('aria-selected', 'true');
+          const panel = document.getElementById('panel-' + tab.dataset.tab);
+          if (panel) {
+            panel.classList.add('active');
+            panel.querySelectorAll('.reveal').forEach(el => { el.classList.remove('visible'); setTimeout(() => observer.observe(el), 10); });
+          }
+        });
+      });
+    });
+
+    // Lightbox
+    (function () {
+      const lb      = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lightboxImg');
+      const lbCount = document.getElementById('lightboxCounter');
+      let imgs = [], cur = 0;
+
+      function open(srcs, startIdx) {
+        imgs = srcs; cur = startIdx || 0; show();
+        lb.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function close() {
+        lb.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+      function show() {
+        lbImg.src = imgs[cur];
+        lbCount.textContent = (cur + 1) + ' / ' + imgs.length;
+      }
+      function go(dir) { cur = ((cur + dir) + imgs.length) % imgs.length; show(); }
+
+      document.getElementById('lightboxClose').addEventListener('click', close);
+      document.getElementById('lightboxBackdrop').addEventListener('click', close);
+      document.getElementById('lightboxPrev').addEventListener('click', () => go(-1));
+      document.getElementById('lightboxNext').addEventListener('click', () => go(1));
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') close();
+        if (e.key === 'ArrowLeft') go(-1);
+        if (e.key === 'ArrowRight') go(1);
+      });
+
+      // Räume – Klick öffnet Lightbox
+      document.querySelectorAll('.room-photo-trigger').forEach(el => {
+        el.addEventListener('click', () => open(JSON.parse(el.dataset.srcs), 0));
+      });
+
+      window.lbOpen = open;
+    })();
+
+    // Apartment Gallery4
+    (function () {
+      const tabs  = document.querySelectorAll('.g4-tab');
+      const cards = document.querySelectorAll('.g4-card');
+      const track = document.getElementById('g4Track');
+
+      function filter(cat) {
+        cards.forEach(card => {
+          card.classList.toggle('g4-hidden', !card.dataset.cat.split(' ').includes(cat));
+        });
+        if (track) track.scrollLeft = 0;
+      }
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          filter(tab.dataset.cat);
+        });
+      });
+
+      const prev = document.getElementById('g4Prev');
+      const next = document.getElementById('g4Next');
+      if (prev && next && track) {
+        const amt = () => track.offsetWidth * 0.85;
+        prev.addEventListener('click', () => track.scrollBy({ left: -amt(), behavior: 'smooth' }));
+        next.addEventListener('click', () => track.scrollBy({ left:  amt(), behavior: 'smooth' }));
+      }
+
+      cards.forEach(card => {
+        card.addEventListener('click', () => {
+          if (!window.lbOpen) return;
+          const visible = [...cards].filter(c => !c.classList.contains('g4-hidden'));
+          const srcs    = visible.map(c => c.dataset.src);
+          const idx     = visible.indexOf(card);
+          window.lbOpen(srcs, idx < 0 ? 0 : idx);
+        });
+      });
+    })();
+
+    // Form submit
+    document.querySelector('form').addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      const orig = btn.textContent;
+      btn.textContent = 'Anfrage gesendet ✓';
+      btn.style.background = 'var(--green)'; btn.style.color = 'var(--white)';
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 3500);
+    });
+
+  </script>
+</body>
+</html>
