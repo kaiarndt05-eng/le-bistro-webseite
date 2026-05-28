@@ -1669,8 +1669,9 @@
       /* 4: Räumlichkeiten – untereinander */
       .rooms-grid { grid-template-columns: 1fr; gap: 16px; background: none; }
 
-      /* 5: Wohnen – genau 1 Bild, Pfeil rechts sichtbar */
-      .g4-card { flex: 0 0 100% !important; }
+      /* 5: Wohnen – genau 1 Bild, snap pro Bild, Pfeil rechts */
+      .g4-card { flex: 0 0 100% !important; scroll-snap-align: start; }
+      .g4-track { gap: 0; scroll-snap-type: x mandatory; }
       .g4-arrow-next {
         display: flex !important;
         right: 8px;
@@ -1678,8 +1679,12 @@
         border-color: rgba(255,255,255,0.2);
       }
 
-      /* 6: Wohnen – weniger Abstand zwischen Infos und Preis */
-      .apt-infobar { margin-top: 24px; gap: 20px; }
+      /* 6: Wohnen – Infos 2-spaltig volle Breite, Preis nah */
+      .apt-infobar { margin-top: 12px; gap: 10px; }
+      .apt-infobar .apt-amenities {
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+      }
     }
 
     /* Mobile menu */
