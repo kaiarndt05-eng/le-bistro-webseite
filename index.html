@@ -2753,6 +2753,47 @@
       setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 3500);
     });
 
+    // Polaroid flick-through
+    (function() {
+      const stack = document.getElementById('polaroidStack');
+      if (!stack) return;
+      const cards = Array.from(stack.querySelectorAll('.polaroid'));
+      const n = cards.length;
+      const rotations = [0, -2.5, 1.8, -1.2];
+      const offsets   = [0,  4,    8,   12  ];
+      let animating = false;
+
+      function applyStack() {
+        cards.forEach((card, i) => {
+          card.style.zIndex   = n - i;
+          card.style.transform = `rotate(${rotations[i]}deg) translateY(${offsets[i]}px)`;
+          card.style.opacity  = i < 3 ? '1' : '0';
+        });
+      }
+
+      applyStack();
+
+      stack.addEventListener('click', () => {
+        if (animating) return;
+        animating = true;
+        const top = cards[0];
+
+        top.style.transition = 'transform 0.45s ease, opacity 0.35s ease';
+        top.style.transform  = 'translateX(110%) rotate(18deg)';
+        top.style.opacity    = '0';
+
+        setTimeout(() => {
+          top.style.transition = 'none';
+          cards.push(cards.shift());
+          applyStack();
+          setTimeout(() => {
+            cards.forEach(c => c.style.transition = 'transform 0.45s ease, opacity 0.35s ease');
+            animating = false;
+          }, 50);
+        }, 420);
+      });
+    })();
+
   </script>
 </body>
 </html>
