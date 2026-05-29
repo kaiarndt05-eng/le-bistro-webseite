@@ -1659,22 +1659,29 @@
     /* ── Mobile fixes ───────────────────────────────── */
     @media (max-width: 768px) {
 
-      /* 1+2: Geschichte – weniger Abstand oben/unten */
-      #about { padding: 56px 0; }
-      .about-grid { gap: 32px; }
-      .gambas-inner { padding: 64px 24px; }
+      /* 1: Hero – oberer Teil des Bilds sichtbar */
+      .hero-right img.hero-img { object-position: top; }
 
-      /* 3: Getränke – kein Abschneiden */
+      /* 2+3: Geschichte – weniger Abstand oben/unten, weniger zwischen Gambas */
+      #about { padding: 28px 0 40px; }
+      .about-grid { gap: 24px; }
+      .gambas-inner { padding: 40px 24px; }
+
+      /* 4: Getränke – Text nicht abgeschnitten */
       #wine { overflow: hidden; }
       .wine-categories { grid-template-columns: 1fr; overflow: hidden; }
+      .menu-item-header { flex-wrap: wrap; gap: 4px; }
+      .menu-item-price { white-space: normal; }
+      .menu-item-dots { display: none; }
 
-      /* 4: Räumlichkeiten – untereinander */
-      .rooms-grid { grid-template-columns: 1fr; gap: 16px; background: none; }
+      /* 5: Räumlichkeiten – Rahmen + untereinander */
+      .rooms-grid { grid-template-columns: 1fr; gap: 0; background: none; }
+      .room-card { border: 1px solid var(--green-border, #c8bfae); }
 
-      /* 5: Wohnen – genau 1 Bild, snap pro Bild, Pfeil rechts */
+      /* 6: Wohnen – genau 1 Bild, snap pro Bild, Pfeil rechts */
       .g4-carousel { overflow: hidden; }
-      .g4-card { flex: 0 0 100% !important; scroll-snap-align: start; }
-      .g4-track { gap: 0; scroll-snap-type: x mandatory; }
+      .g4-track { display: flex; flex-wrap: nowrap; gap: 0 !important; scroll-snap-type: x mandatory; overflow-x: scroll; }
+      .g4-card { flex: 0 0 100% !important; width: 100% !important; min-width: 100% !important; scroll-snap-align: start; }
       .g4-arrow-next {
         display: flex !important;
         right: 8px;
@@ -1682,10 +1689,10 @@
         border-color: rgba(255,255,255,0.2);
       }
 
-      /* 6: Wohnen – Infos 2-spaltig volle Breite, Preis-Abstand = Infos-Abstand */
+      /* Wohnen – Infos 2-spaltig volle Breite, Preis-Abstand = Infos-Abstand */
       .apt-infobar { margin-top: 10px; gap: 10px; }
       .apt-infobar .apt-amenities { grid-template-columns: 1fr 1fr; width: 100%; }
-      .apt-price-card { padding: 16px; }
+      .apt-price-card { padding: 10px 16px; }
     }
 
     /* ── Fluid Mobile Nav ───────────────────────────── */
