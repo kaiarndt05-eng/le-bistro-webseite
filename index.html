@@ -1778,14 +1778,22 @@
   <div id="progress"></div>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true">
-    <button class="mobile-close" id="mobileClose" aria-label="Menü schließen">✕</button>
-    <a href="#about" onclick="closeMobileMenu()">Geschichte</a>
-    <a href="#menu" onclick="closeMobileMenu()">Speisekarte</a>
-    <a href="#wine" onclick="closeMobileMenu()">Getränke</a>
-    <a href="#rooms" onclick="closeMobileMenu()">Räumlichkeiten</a>
-    <a href="#sportsbar" onclick="closeMobileMenu()">Sportsbar</a>
-    <a href="#reservation" onclick="closeMobileMenu()">Reservierung</a>
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true"></div>
+
+  <!-- Fluid Mobile Nav -->
+  <div class="fluid-nav" id="fluidNav">
+    <button class="fluid-toggle" id="fluidToggle" aria-label="Menü">
+      <span class="fluid-hamburger">☰</span>
+      <span class="fluid-close">✕</span>
+    </button>
+    <div class="fluid-items">
+      <a href="#about"       class="fluid-item">Geschichte</a>
+      <a href="#menu"        class="fluid-item">Speisekarte</a>
+      <a href="#wine"        class="fluid-item">Getränke</a>
+      <a href="#rooms"       class="fluid-item">Räumlichkeiten</a>
+      <a href="#sportsbar"   class="fluid-item">Sportsbar</a>
+      <a href="#reservation" class="fluid-item fluid-item-cta">Reservieren</a>
+    </div>
   </div>
 
   <!-- Navigation -->
