@@ -1688,30 +1688,89 @@
       .apt-price-card { padding: 16px; }
     }
 
-    /* Mobile menu */
-    .mobile-menu {
-      position: fixed; inset: 0;
-      background: rgba(250,249,246,0.98);
-      backdrop-filter: blur(20px);
-      z-index: 300;
+    /* ── Fluid Mobile Nav ───────────────────────────── */
+    .fluid-nav { display: none; }
+
+    @media (max-width: 768px) {
+      .nav-hamburger { display: none !important; }
+      .fluid-nav {
+        display: block;
+        position: fixed;
+        top: 14px; right: 16px;
+        z-index: 500;
+      }
+    }
+
+    .fluid-toggle {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--green);
+      border: none; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 28px;
-      opacity: 0; pointer-events: none;
-      transition: opacity 0.4s;
+      position: relative; z-index: 2;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.25);
+      transition: transform 0.2s;
     }
-    .mobile-menu.open { opacity: 1; pointer-events: all; }
-    .mobile-menu a {
-      font-family: var(--font-display);
-      font-size: 2.2rem; font-weight: 300; font-style: italic;
-      color: var(--dark); text-decoration: none;
-      transition: color 0.3s;
+    .fluid-toggle:active { transform: scale(0.92); }
+
+    .fluid-hamburger, .fluid-close {
+      position: absolute;
+      color: white; font-style: normal; line-height: 1;
+      transition: opacity 0.22s, transform 0.3s cubic-bezier(0.4,0,0.2,1);
     }
-    .mobile-menu a:hover { color: var(--green); }
-    .mobile-close {
-      position: absolute; top: 24px; right: 28px;
-      font-size: 1.4rem; color: var(--text-muted);
-      cursor: pointer; background: none; border: none;
+    .fluid-hamburger {
+      font-size: 1.15rem;
+      opacity: 1; transform: rotate(0deg) scale(1);
     }
+    .fluid-close {
+      font-size: 1rem;
+      opacity: 0; transform: rotate(-90deg) scale(0.6);
+    }
+    .fluid-nav.open .fluid-hamburger { opacity: 0; transform: rotate(90deg) scale(0.6); }
+    .fluid-nav.open .fluid-close    { opacity: 1; transform: rotate(0deg) scale(1); }
+
+    .fluid-items {
+      position: absolute;
+      top: calc(100% + 10px); right: 0;
+      min-width: 168px;
+      display: flex; flex-direction: column;
+      overflow: hidden;
+      pointer-events: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+    }
+    .fluid-nav.open .fluid-items { pointer-events: all; }
+
+    .fluid-item {
+      display: block;
+      padding: 12px 20px;
+      background: var(--green);
+      color: rgba(250,249,246,0.78);
+      text-decoration: none;
+      font-size: 0.6rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      text-align: right;
+      border-bottom: 1px solid rgba(250,249,246,0.08);
+      opacity: 0;
+      transform: translateX(12px);
+      transition: opacity 0.2s, transform 0.22s, background 0.2s, color 0.2s;
+    }
+    .fluid-item:last-child { border-bottom: none; }
+    .fluid-item:hover { background: var(--green-mid); color: var(--white); }
+    .fluid-item-cta {
+      background: var(--green-accent);
+      color: var(--white);
+    }
+
+    .fluid-nav.open .fluid-item:nth-child(1) { opacity:1; transform:translateX(0); transition-delay:.04s; }
+    .fluid-nav.open .fluid-item:nth-child(2) { opacity:1; transform:translateX(0); transition-delay:.08s; }
+    .fluid-nav.open .fluid-item:nth-child(3) { opacity:1; transform:translateX(0); transition-delay:.12s; }
+    .fluid-nav.open .fluid-item:nth-child(4) { opacity:1; transform:translateX(0); transition-delay:.16s; }
+    .fluid-nav.open .fluid-item:nth-child(5) { opacity:1; transform:translateX(0); transition-delay:.20s; }
+    .fluid-nav.open .fluid-item:nth-child(6) { opacity:1; transform:translateX(0); transition-delay:.24s; }
+
+    /* hide old mobile-menu */
+    .mobile-menu { display: none !important; }
   </style>
 </head>
 <body>
