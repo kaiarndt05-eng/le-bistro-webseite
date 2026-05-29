@@ -1572,6 +1572,24 @@
     .g4-arrow-next { right: -44px; }
     .g4-arrow:hover { background: rgba(250,249,246,0.22); }
     @media (max-width: 1140px) { .g4-arrow { display: none; } }
+
+    .g4-swipe-hint {
+      display: none;
+      align-items: center; justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+      color: rgba(30,61,44,0.5);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .g4-swipe-hint svg { animation: swipe-nudge 1.8s ease-in-out infinite; }
+    @keyframes swipe-nudge {
+      0%, 100% { transform: translateX(0); }
+      40%       { transform: translateX(5px); }
+      70%       { transform: translateX(-3px); }
+    }
     @media (max-width: 900px)  { .g4-card { flex: 0 0 calc(50% - 8px); } }
     @media (max-width: 560px)  { .g4-card { flex: 0 0 82%; } }
 
