@@ -2719,13 +2719,21 @@
       navbar.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
-    // Mobile menu
-    const mobileMenu = document.getElementById('mobileMenu');
-    const hamburger  = document.getElementById('hamburger');
-    document.getElementById('mobileClose').addEventListener('click', () => mobileMenu.classList.remove('open'));
-    hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
-    hamburger.addEventListener('keydown', e => { if (e.key === 'Enter') mobileMenu.classList.add('open'); });
-    function closeMobileMenu() { mobileMenu.classList.remove('open'); }
+    // Fluid mobile nav
+    const fluidNav    = document.getElementById('fluidNav');
+    const fluidToggle = document.getElementById('fluidToggle');
+    function closeFluidNav() { fluidNav.classList.remove('open'); }
+    function closeMobileMenu() { closeFluidNav(); }
+    fluidToggle.addEventListener('click', e => {
+      e.stopPropagation();
+      fluidNav.classList.toggle('open');
+    });
+    document.querySelectorAll('.fluid-item').forEach(a => {
+      a.addEventListener('click', closeFluidNav);
+    });
+    document.addEventListener('click', e => {
+      if (!fluidNav.contains(e.target)) closeFluidNav();
+    });
 
     // Reveal on scroll
     const observer = new IntersectionObserver(entries => {
