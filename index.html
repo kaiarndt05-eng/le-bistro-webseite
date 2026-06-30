@@ -2901,12 +2901,25 @@
       });
     })();
 
-    // Form submit
+    // Form submit — sendet die Reservierungsanfrage per WhatsApp
     document.querySelector('form').addEventListener('submit', e => {
       e.preventDefault();
+      const f = e.target;
+      const lines = [
+        'Tischreservierung – Le Bistro',
+        `Name: ${f.vorname.value.trim()} ${f.nachname.value.trim()}`,
+        `Datum: ${f.datum.value}`,
+        `Uhrzeit: ${f.uhrzeit.value}`,
+        `Personen: ${f.personen.value}`,
+      ];
+      if (f.telefon.value.trim()) lines.push(`Telefon: ${f.telefon.value.trim()}`);
+      lines.push(`E-Mail: ${f.email.value.trim()}`);
+      if (f.wuensche.value.trim()) lines.push(`Wünsche: ${f.wuensche.value.trim()}`);
+      window.open(`https://wa.me/4915735688661?text=${encodeURIComponent(lines.join('\n'))}`, '_blank');
+
       const btn = e.target.querySelector('.form-submit');
       const orig = btn.textContent;
-      btn.textContent = 'Anfrage gesendet ✓';
+      btn.textContent = 'Weiter zu WhatsApp ✓';
       btn.style.background = 'var(--green)'; btn.style.color = 'var(--white)';
       setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; }, 3500);
     });
