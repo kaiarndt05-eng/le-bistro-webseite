@@ -1521,6 +1521,59 @@
       .apt-infobar-right { flex: 1 1 auto; width: 100%; }
     }
 
+    /* Wohnungs-Umschalter (zwei Ferienwohnungen) */
+    .apt-switch {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .apt-switch-btn {
+      flex: 0 1 330px;
+      display: flex; flex-direction: column; gap: 8px;
+      padding: 18px 24px; text-align: left;
+      border: 1px solid rgba(250,249,246,0.16);
+      background: rgba(250,249,246,0.04);
+      cursor: pointer; font-family: var(--font-body);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .apt-switch-btn:hover { background: rgba(250,249,246,0.09); border-color: rgba(250,249,246,0.32); }
+    .apt-switch-btn.active { background: rgba(250,249,246,0.12); border-color: rgba(250,249,246,0.45); }
+    .apt-switch-name {
+      font-family: var(--font-display); font-size: 1.1rem; font-weight: 300;
+      color: rgba(250,249,246,0.75); line-height: 1.3;
+      display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+      transition: color 0.3s;
+    }
+    .apt-switch-name em { font-style: italic; }
+    .apt-switch-btn.active .apt-switch-name,
+    .apt-switch-btn:hover .apt-switch-name { color: var(--white); }
+    .apt-switch-meta {
+      font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(250,249,246,0.42); transition: color 0.3s;
+    }
+    .apt-switch-btn.active .apt-switch-meta { color: var(--green-accent); }
+    .apt-badge-new {
+      font-family: var(--font-body);
+      font-size: 0.5rem; letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 3px 8px;
+      border: 1px solid var(--green-accent);
+      color: var(--green-accent);
+      line-height: 1;
+    }
+
+    /* Einzelne Wohnung */
+    .apt-unit { display: none; }
+    .apt-unit.active { display: block; }
+    .apt-unit-lead {
+      max-width: 620px; margin: 40px auto 0; text-align: center;
+      font-size: 0.88rem; line-height: 1.9; color: rgba(250,249,246,0.55);
+    }
+    .apt-unit-lead + .apt-gallery4 { margin-top: 40px; }
+    @media (max-width: 560px) {
+      .apt-switch { gap: 10px; }
+      .apt-switch-btn { flex: 1 1 100%; padding: 16px 18px; }
+    }
+
     /* Apartment Gallery4 */
     .apt-gallery4 { margin-top: 52px; }
     .g4-tabs {
@@ -2444,12 +2497,12 @@
     </div>
   </section>
 
-  <!-- FERIENWOHNUNG -->
+  <!-- FERIENWOHNUNGEN -->
   <section id="apartment" aria-labelledby="apt-heading">
     <div class="section-inner">
 
       <!-- 1. Überschrift -->
-      <div class="apt-header reveal" style="text-align:center;margin-bottom:48px;">
+      <div class="apt-header reveal" style="text-align:center;margin-bottom:44px;">
         <div class="green-divider" style="justify-content:center;margin-bottom:18px;">
           <div class="green-divider-line" style="max-width:80px;background:linear-gradient(to right,transparent,rgba(250,249,246,0.2));"></div>
           <div class="green-divider-ornament" style="border-color:rgba(250,249,246,0.5);"></div>
@@ -2459,81 +2512,164 @@
         <h2 class="section-title reveal reveal-delay-1" id="apt-heading" style="color:var(--white);">
           Wohnen, wo<br><em style="color:rgba(250,249,246,0.65);">Bückeburg speist</em>
         </h2>
-        <p class="reveal reveal-delay-2" style="max-width:560px;margin:20px auto 0;font-size:0.9rem;line-height:1.9;color:rgba(250,249,246,0.55);">
-          Direkt über dem Restaurant liegt unsere großzügige Ferienwohnung im zweiten Obergeschoss. Ob Kurzurlaub, Familienausflug oder Geschäftsreise – zentral, komfortabel, mit dem Le Bistro direkt vor der Haustür.
+        <p class="reveal reveal-delay-2" style="max-width:580px;margin:20px auto 0;font-size:0.9rem;line-height:1.9;color:rgba(250,249,246,0.55);">
+          Über dem Restaurant vermieten wir zwei eigenständige Ferienwohnungen – die großzügige Wohnung im zweiten Obergeschoss und, eine Etage tiefer, unser neues Apartment. Ob Kurzurlaub, Familienausflug oder Geschäftsreise: zentral, komfortabel, mit dem Le Bistro direkt vor der Haustür.
         </p>
       </div>
 
-      <!-- 2. Gallery4 -->
-      <div class="apt-gallery4 reveal" style="margin-top:0;">
-        <div class="g4-tabs" role="tablist">
-          <button class="g4-tab active" data-cat="all">Alle</button>
-          <button class="g4-tab" data-cat="wohnzimmer">Wohnzimmer</button>
-          <button class="g4-tab" data-cat="kueche">Küche</button>
-          <button class="g4-tab" data-cat="bad">Bad</button>
-          <button class="g4-tab" data-cat="sz1">Schlafzimmer 1</button>
-          <button class="g4-tab" data-cat="sz2">Schlafzimmer 2</button>
-          <button class="g4-tab" data-cat="sz3">Schlafzimmer 3</button>
-          <button class="g4-tab" data-cat="sonstige">Flur &amp; Aussicht</button>
-        </div>
-        <div class="g4-carousel">
-          <button class="g4-arrow g4-arrow-prev" id="g4Prev" aria-label="Zurück">&#8249;</button>
-          <div class="g4-track" id="g4Track">
-            <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_1.png"><img src="wohnzimmer_1.png" alt="Wohnzimmer"></div>
-            <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_2.png"><img src="wohnzimmer_2.png" alt="Wohnzimmer"></div>
-            <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_3.png"><img src="wohnzimmer_3.png" alt="Wohnzimmer"></div>
-            <div class="g4-card" data-cat="all kueche" data-src="küche_1.png"><img src="küche_1.png" alt="Küche"></div>
-            <div class="g4-card" data-cat="all kueche" data-src="küche_2.png"><img src="küche_2.png" alt="Küche"></div>
-            <div class="g4-card" data-cat="all kueche" data-src="küche_3.png"><img src="küche_3.png" alt="Küche"></div>
-            <div class="g4-card" data-cat="all kueche" data-src="küche-4.jpeg"><img src="küche-4.jpeg" alt="Küche"></div>
-            <div class="g4-card" data-cat="all bad" data-src="bad_1.png"><img src="bad_1.png" alt="Bad"></div>
-            <div class="g4-card" data-cat="all bad" data-src="bad_2.png"><img src="bad_2.png" alt="Bad"></div>
-            <div class="g4-card" data-cat="all bad" data-src="bad_3.jpeg"><img src="bad_3.jpeg" alt="Bad"></div>
-            <div class="g4-card" data-cat="all bad" data-src="bad_4.jpeg"><img src="bad_4.jpeg" alt="Bad"></div>
-            <div class="g4-card" data-cat="all sz1" data-src="grosses_zimmer_wohnung_bestes.png"><img src="grosses_zimmer_wohnung_bestes.png" alt="Schlafzimmer 1"></div>
-            <div class="g4-card" data-cat="all sz1" data-src="grosses_zimmer_wohnung.png"><img src="grosses_zimmer_wohnung.png" alt="Schlafzimmer 1"></div>
-            <div class="g4-card" data-cat="all sz3" data-src="schrank_zimmer1.png"><img src="schrank_zimmer1.png" alt="Schlafzimmer 3"></div>
-            <div class="g4-card" data-cat="all sz2" data-src="kleines_zimmer_wohnung.png"><img src="kleines_zimmer_wohnung.png" alt="Schlafzimmer 2"></div>
-            <div class="g4-card" data-cat="all sz2" data-src="kleines_sofa_wohnung.png"><img src="kleines_sofa_wohnung.png" alt="Schlafzimmer 2"></div>
-            <div class="g4-card" data-cat="all sz3" data-src="wohnung_zimmer_1.png"><img src="wohnung_zimmer_1.png" alt="Schlafzimmer 3"></div>
-            <div class="g4-card" data-cat="all sonstige" data-src="gang_wohnung.png"><img src="gang_wohnung.png" alt="Flur"></div>
-            <div class="g4-card" data-cat="all sonstige" data-src="aussicht_wohnung.png"><img src="aussicht_wohnung.png" alt="Aussicht"></div>
-          </div>
-          <button class="g4-arrow g4-arrow-next" id="g4Next" aria-label="Weiter">&#8250;</button>
-        </div>
-        <div class="g4-swipe-hint">
-          <svg width="36" height="18" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 9h24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
-            <path d="M2 5l-2 4 2 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M34 5l2 4-2 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <span>Wischen</span>
-        </div>
+      <!-- 2. Wohnungs-Umschalter -->
+      <div class="apt-switch reveal reveal-delay-2" role="tablist" aria-label="Ferienwohnung auswählen">
+        <button class="apt-switch-btn active" role="tab" aria-selected="true" aria-controls="apt-unit-1" data-apt="apt-unit-1">
+          <span class="apt-switch-name">Die große <em>Ferienwohnung</em></span>
+          <span class="apt-switch-meta">2. Obergeschoss · 3 Schlafzimmer · 5 Betten</span>
+        </button>
+        <button class="apt-switch-btn" role="tab" aria-selected="false" aria-controls="apt-unit-2" data-apt="apt-unit-2">
+          <span class="apt-switch-name">Das <em>Apartment</em><span class="apt-badge-new">Neu</span></span>
+          <span class="apt-switch-meta">1. Obergeschoss · Doppelbett · 2 Gäste</span>
+        </button>
       </div>
 
-      <!-- 3. Info-Leiste -->
-      <div class="apt-infobar reveal">
-        <div class="apt-amenities">
-          <div class="apt-amenity"><span class="apt-amenity-icon">🛏</span><span>3 Schlafzimmer, 5 Betten</span></div>
-          <div class="apt-amenity"><span class="apt-amenity-icon">🚿</span><span>Badezimmer mit Dusche</span></div>
-          <div class="apt-amenity"><span class="apt-amenity-icon">🍳</span><span>Voll ausgestattete Küche</span></div>
-          <div class="apt-amenity"><span class="apt-amenity-icon">🫧</span><span>Waschmaschine</span></div>
-          <div class="apt-amenity"><span class="apt-amenity-icon">📺</span><span>Flachbildschirm & Netflix</span></div>
-          <div class="apt-amenity"><span class="apt-amenity-icon">📍</span><span>Zentrale Lage, Lange Str.</span></div>
-        </div>
-        <div class="apt-infobar-right">
-          <div class="apt-price-card">
-            <div class="apt-price-val">150 €</div>
-            <div class="apt-price-unit">pro Nacht</div>
-            <div class="apt-minstay">Min. 2 Nächte</div>
+      <!-- ── WOHNUNG 1 – 2. OG ─────────────────────────── -->
+      <div class="apt-unit active" id="apt-unit-1" role="tabpanel">
+
+        <p class="apt-unit-lead reveal">
+          Direkt über dem Restaurant: unsere großzügige Wohnung mit drei Schlafzimmern, eigener Küche und Wohnzimmer – Platz für Familien, Freundeskreise und längere Aufenthalte.
+        </p>
+
+        <div class="apt-gallery4 reveal">
+          <div class="g4-tabs" role="tablist">
+            <button class="g4-tab active" data-cat="all">Alle</button>
+            <button class="g4-tab" data-cat="wohnzimmer">Wohnzimmer</button>
+            <button class="g4-tab" data-cat="kueche">Küche</button>
+            <button class="g4-tab" data-cat="bad">Bad</button>
+            <button class="g4-tab" data-cat="sz1">Schlafzimmer 1</button>
+            <button class="g4-tab" data-cat="sz2">Schlafzimmer 2</button>
+            <button class="g4-tab" data-cat="sz3">Schlafzimmer 3</button>
+            <button class="g4-tab" data-cat="sonstige">Flur &amp; Aussicht</button>
           </div>
-          <a href="https://wa.me/4915735688661" target="_blank" rel="noopener"
-             class="apt-whatsapp-btn" style="width:100%;justify-content:center;"
-             aria-label="WhatsApp Buchungsanfrage">
-            <span class="apt-whatsapp-icon">💬</span>
-            01573 56 88661
-          </a>
+          <div class="g4-carousel">
+            <button class="g4-arrow g4-arrow-prev" id="g4Prev" aria-label="Zurück">&#8249;</button>
+            <div class="g4-track" id="g4Track">
+              <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_1.png"><img src="wohnzimmer_1.png" alt="Wohnzimmer"></div>
+              <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_2.png"><img src="wohnzimmer_2.png" alt="Wohnzimmer"></div>
+              <div class="g4-card" data-cat="all wohnzimmer" data-src="wohnzimmer_3.png"><img src="wohnzimmer_3.png" alt="Wohnzimmer"></div>
+              <div class="g4-card" data-cat="all kueche" data-src="küche_1.png"><img src="küche_1.png" alt="Küche"></div>
+              <div class="g4-card" data-cat="all kueche" data-src="küche_2.png"><img src="küche_2.png" alt="Küche"></div>
+              <div class="g4-card" data-cat="all kueche" data-src="küche_3.png"><img src="küche_3.png" alt="Küche"></div>
+              <div class="g4-card" data-cat="all kueche" data-src="küche-4.jpeg"><img src="küche-4.jpeg" alt="Küche"></div>
+              <div class="g4-card" data-cat="all bad" data-src="bad_1.png"><img src="bad_1.png" alt="Bad"></div>
+              <div class="g4-card" data-cat="all bad" data-src="bad_2.png"><img src="bad_2.png" alt="Bad"></div>
+              <div class="g4-card" data-cat="all bad" data-src="bad_3.jpeg"><img src="bad_3.jpeg" alt="Bad"></div>
+              <div class="g4-card" data-cat="all bad" data-src="bad_4.jpeg"><img src="bad_4.jpeg" alt="Bad"></div>
+              <div class="g4-card" data-cat="all sz1" data-src="grosses_zimmer_wohnung_bestes.png"><img src="grosses_zimmer_wohnung_bestes.png" alt="Schlafzimmer 1"></div>
+              <div class="g4-card" data-cat="all sz1" data-src="grosses_zimmer_wohnung.png"><img src="grosses_zimmer_wohnung.png" alt="Schlafzimmer 1"></div>
+              <div class="g4-card" data-cat="all sz3" data-src="schrank_zimmer1.png"><img src="schrank_zimmer1.png" alt="Schlafzimmer 3"></div>
+              <div class="g4-card" data-cat="all sz2" data-src="kleines_zimmer_wohnung.png"><img src="kleines_zimmer_wohnung.png" alt="Schlafzimmer 2"></div>
+              <div class="g4-card" data-cat="all sz2" data-src="kleines_sofa_wohnung.png"><img src="kleines_sofa_wohnung.png" alt="Schlafzimmer 2"></div>
+              <div class="g4-card" data-cat="all sz3" data-src="wohnung_zimmer_1.png"><img src="wohnung_zimmer_1.png" alt="Schlafzimmer 3"></div>
+              <div class="g4-card" data-cat="all sonstige" data-src="gang_wohnung.png"><img src="gang_wohnung.png" alt="Flur"></div>
+              <div class="g4-card" data-cat="all sonstige" data-src="aussicht_wohnung.png"><img src="aussicht_wohnung.png" alt="Aussicht"></div>
+            </div>
+            <button class="g4-arrow g4-arrow-next" id="g4Next" aria-label="Weiter">&#8250;</button>
+          </div>
+          <div class="g4-swipe-hint">
+            <svg width="36" height="18" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9h24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M2 5l-2 4 2 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M34 5l2 4-2 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Wischen</span>
+          </div>
         </div>
+
+        <div class="apt-infobar reveal">
+          <div class="apt-amenities">
+            <div class="apt-amenity"><span class="apt-amenity-icon">🛏</span><span>3 Schlafzimmer, 5 Betten</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">🚿</span><span>Badezimmer mit Dusche</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">🍳</span><span>Voll ausgestattete Küche</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">🫧</span><span>Waschmaschine</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">📺</span><span>Flachbildschirm &amp; Netflix</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">📍</span><span>Zentrale Lage, Lange Str.</span></div>
+          </div>
+          <div class="apt-infobar-right">
+            <div class="apt-price-card">
+              <div class="apt-price-val">150 €</div>
+              <div class="apt-price-unit">pro Nacht</div>
+              <div class="apt-minstay">Min. 2 Nächte</div>
+            </div>
+            <a href="https://wa.me/4915735688661" target="_blank" rel="noopener"
+               class="apt-whatsapp-btn" style="width:100%;justify-content:center;"
+               aria-label="WhatsApp Buchungsanfrage für die große Ferienwohnung">
+              <span class="apt-whatsapp-icon">💬</span>
+              01573 56 88661
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── WOHNUNG 2 – 1. OG (NEU) ───────────────────── -->
+      <div class="apt-unit" id="apt-unit-2" role="tabpanel">
+
+        <p class="apt-unit-lead reveal">
+          Eine Etage tiefer, im ersten Obergeschoss: unser neu hergerichtetes Apartment. Wohn- und Schlafbereich in einem, dazu eine separate Küche mit Essplatz und ein modernes Bad. Freigelegtes Ziegelmauerwerk, hohe Altbaufenster und der Blick auf die historische Fassade gegenüber – ideal für Paare, Städtereisende und Geschäftsgäste.
+        </p>
+
+        <div class="apt-gallery4 reveal">
+          <div class="g4-tabs" role="tablist">
+            <button class="g4-tab active" data-cat="all">Alle</button>
+            <button class="g4-tab" data-cat="wohnen">Wohnen &amp; Schlafen</button>
+            <button class="g4-tab" data-cat="kueche">Küche</button>
+            <button class="g4-tab" data-cat="bad">Bad</button>
+          </div>
+          <div class="g4-carousel">
+            <button class="g4-arrow g4-arrow-prev" aria-label="Zurück">&#8249;</button>
+            <div class="g4-track">
+              <div class="g4-card" data-cat="all wohnen" data-src="fewo2_schlafen_1.jpg"><img src="fewo2_schlafen_1.jpg" alt="Schlafbereich mit Boxspring-Doppelbett" loading="lazy" decoding="async"></div>
+              <div class="g4-card" data-cat="all wohnen" data-src="fewo2_wohnen_1.jpg"><img src="fewo2_wohnen_1.jpg" alt="Wohnbereich mit Sofa am Altbaufenster" loading="lazy" decoding="async"></div>
+              <div class="g4-card" data-cat="all wohnen" data-src="fewo2_wohnen_2.jpg"><img src="fewo2_wohnen_2.jpg" alt="Sofa mit Blick auf die historische Fassade gegenüber" loading="lazy" decoding="async"></div>
+              <div class="g4-card" data-cat="all wohnen" data-src="fewo2_wohnen_3.jpg"><img src="fewo2_wohnen_3.jpg" alt="Wohnbereich mit Flachbildschirm und Durchgang zur Küche" loading="lazy" decoding="async"></div>
+              <div class="g4-card" data-cat="all kueche" data-src="fewo2_kueche_1.jpg"><img src="fewo2_kueche_1.jpg" alt="Separate Küche mit Essplatz am Fenster" loading="lazy" decoding="async"></div>
+              <div class="g4-card" data-cat="all kueche" data-src="fewo2_kueche_2.jpg"><img src="fewo2_kueche_2.jpg" alt="Küchenzeile mit Ceranfeld, Kaffeemaschine und Wasserkocher" loading="lazy" decoding="async"></div>
+              <div class="g4-card" data-cat="all bad" data-src="fewo2_bad_1.jpg"><img src="fewo2_bad_1.jpg" alt="Bad mit bodengleicher Dusche" loading="lazy" decoding="async"></div>
+              <div class="g4-card" data-cat="all bad" data-src="fewo2_bad_2.jpg"><img src="fewo2_bad_2.jpg" alt="Bad mit Waschbecken, Spiegel und WC" loading="lazy" decoding="async"></div>
+            </div>
+            <button class="g4-arrow g4-arrow-next" aria-label="Weiter">&#8250;</button>
+          </div>
+          <div class="g4-swipe-hint">
+            <svg width="36" height="18" viewBox="0 0 36 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9h24" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <path d="M2 5l-2 4 2 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M34 5l2 4-2 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Wischen</span>
+          </div>
+        </div>
+
+        <div class="apt-infobar reveal">
+          <div class="apt-amenities">
+            <div class="apt-amenity"><span class="apt-amenity-icon">🛏</span><span>Doppelbett (Boxspring), 2 Gäste</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">🚿</span><span>Bad mit Dusche &amp; WC</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">🍳</span><span>Separate Küche mit Essplatz</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">🛋</span><span>Sofaecke &amp; Flachbildschirm</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">🧱</span><span>Altbau-Charme, Blick auf die Altstadt</span></div>
+            <div class="apt-amenity"><span class="apt-amenity-icon">📍</span><span>Zentrale Lage, Lange Str.</span></div>
+          </div>
+          <div class="apt-infobar-right">
+            <div class="apt-price-card">
+              <div class="apt-price-val">150 €</div>
+              <div class="apt-price-unit">pro Nacht</div>
+              <div class="apt-minstay">Min. 2 Nächte</div>
+            </div>
+            <a href="https://wa.me/4915735688661" target="_blank" rel="noopener"
+               class="apt-whatsapp-btn" style="width:100%;justify-content:center;"
+               aria-label="WhatsApp Buchungsanfrage für das Apartment im ersten Obergeschoss">
+              <span class="apt-whatsapp-icon">💬</span>
+              01573 56 88661
+            </a>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -2729,7 +2865,7 @@
             <li><a href="#menu">Speisekarte</a></li>
             <li><a href="#wine">Getränkekarte</a></li>
             <li><a href="#rooms">Räumlichkeiten</a></li>
-            <li><a href="#apartment">Ferienwohnung</a></li>
+            <li><a href="#apartment">Ferienwohnungen</a></li>
             <li><a href="#sportsbar">Sportsbar</a></li>
             <li><a href="#reservation">Reservierung</a></li>
           </ul>
@@ -2861,42 +2997,69 @@
       window.lbOpen = open;
     })();
 
-    // Apartment Gallery4
+    // Apartment Gallery4 — pro Galerie gekapselt, damit beide Wohnungen unabhängig sind
     (function () {
-      const tabs  = document.querySelectorAll('.g4-tab');
-      const cards = document.querySelectorAll('.g4-card');
-      const track = document.getElementById('g4Track');
+      document.querySelectorAll('.apt-gallery4').forEach(gallery => {
+        const tabs  = Array.from(gallery.querySelectorAll('.g4-tab'));
+        const cards = Array.from(gallery.querySelectorAll('.g4-card'));
+        const track = gallery.querySelector('.g4-track');
 
-      function filter(cat) {
-        cards.forEach(card => {
-          card.classList.toggle('g4-hidden', !card.dataset.cat.split(' ').includes(cat));
+        function filter(cat) {
+          cards.forEach(card => {
+            card.classList.toggle('g4-hidden', !card.dataset.cat.split(' ').includes(cat));
+          });
+          if (track) track.scrollLeft = 0;
+        }
+
+        tabs.forEach(tab => {
+          tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            filter(tab.dataset.cat);
+          });
         });
-        if (track) track.scrollLeft = 0;
-      }
 
-      tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-          tabs.forEach(t => t.classList.remove('active'));
-          tab.classList.add('active');
-          filter(tab.dataset.cat);
+        const prev = gallery.querySelector('.g4-arrow-prev');
+        const next = gallery.querySelector('.g4-arrow-next');
+        if (prev && next && track) {
+          const amt = () => track.offsetWidth * 0.85;
+          prev.addEventListener('click', () => track.scrollBy({ left: -amt(), behavior: 'smooth' }));
+          next.addEventListener('click', () => track.scrollBy({ left:  amt(), behavior: 'smooth' }));
+        }
+
+        cards.forEach(card => {
+          card.addEventListener('click', () => {
+            if (!window.lbOpen) return;
+            const visible = cards.filter(c => !c.classList.contains('g4-hidden'));
+            const srcs    = visible.map(c => c.dataset.src);
+            const idx     = visible.indexOf(card);
+            window.lbOpen(srcs, idx < 0 ? 0 : idx);
+          });
         });
       });
+    })();
 
-      const prev = document.getElementById('g4Prev');
-      const next = document.getElementById('g4Next');
-      if (prev && next && track) {
-        const amt = () => track.offsetWidth * 0.85;
-        prev.addEventListener('click', () => track.scrollBy({ left: -amt(), behavior: 'smooth' }));
-        next.addEventListener('click', () => track.scrollBy({ left:  amt(), behavior: 'smooth' }));
-      }
+    // Umschalter zwischen den beiden Ferienwohnungen
+    (function () {
+      const btns  = Array.from(document.querySelectorAll('.apt-switch-btn'));
+      const units = Array.from(document.querySelectorAll('.apt-unit'));
+      if (!btns.length || !units.length) return;
 
-      cards.forEach(card => {
-        card.addEventListener('click', () => {
-          if (!window.lbOpen) return;
-          const visible = [...cards].filter(c => !c.classList.contains('g4-hidden'));
-          const srcs    = visible.map(c => c.dataset.src);
-          const idx     = visible.indexOf(card);
-          window.lbOpen(srcs, idx < 0 ? 0 : idx);
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = document.getElementById(btn.dataset.apt);
+          if (!target || btn.classList.contains('active')) return;
+
+          btns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+          units.forEach(u => u.classList.remove('active'));
+          btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
+          target.classList.add('active');
+
+          // Reveal-Animationen der neu eingeblendeten Wohnung erneut auslösen
+          target.querySelectorAll('.reveal').forEach(el => {
+            el.classList.remove('visible');
+            setTimeout(() => observer.observe(el), 10);
+          });
         });
       });
     })();
