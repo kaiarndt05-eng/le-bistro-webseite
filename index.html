@@ -62,6 +62,7 @@
       --green-mid:    #2C5A3F;
       --green-accent: #3A7A56;
       --green-pale:   rgba(30,61,44,0.07);
+      --xmas-accent:  #C9A227;
       --green-border: rgba(30,61,44,0.15);
       --black:        #111210;
       --dark:         #1C1E1A;
@@ -576,6 +577,80 @@
       transition: background 0.3s, border-color 0.3s;
     }
     .gambas-cta:hover { background: rgba(250,249,246,0.08); border-color: rgba(250,249,246,0.6); }
+
+    /* ─── WEIHNACHTSBUFFET ──────────────────────────── */
+    #xmas {
+      background: var(--dark);
+      position: relative; overflow: hidden;
+    }
+    #xmas::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('weihnachtsbuffet.jpg') center/cover no-repeat;
+      opacity: 0.18;
+    }
+    .xmas-inner {
+      position: relative; z-index: 1;
+      max-width: 760px; margin: 0 auto;
+      padding: 110px 40px;
+      text-align: center;
+    }
+    .xmas-label {
+      font-size: 0.58rem; letter-spacing: 0.44em; text-transform: uppercase;
+      color: var(--xmas-accent); margin-bottom: 24px;
+    }
+    .xmas-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6.5vw, 5.4rem);
+      font-weight: 300; line-height: 1;
+      color: var(--white); margin-bottom: 20px;
+      letter-spacing: 0.03em;
+    }
+    .xmas-title em { color: var(--xmas-accent); font-style: italic; }
+    .xmas-sub {
+      font-size: 0.68rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(250,249,246,0.5); margin-bottom: 52px;
+    }
+    .xmas-course {
+      padding: 22px 0;
+      border-top: 1px solid rgba(250,249,246,0.14);
+    }
+    .xmas-course:first-of-type { border-top: none; padding-top: 0; }
+    .xmas-course-label {
+      font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--xmas-accent); margin-bottom: 10px;
+    }
+    .xmas-course-text {
+      font-size: 1rem; line-height: 1.85;
+      color: rgba(250,249,246,0.76);
+    }
+    .xmas-price {
+      display: flex; align-items: baseline; justify-content: center;
+      gap: 12px; margin: 48px 0 16px;
+    }
+    .xmas-price-val {
+      font-family: var(--font-display);
+      font-size: 3.5rem; font-weight: 300; color: var(--white); line-height: 1;
+    }
+    .xmas-price-unit {
+      font-size: 0.62rem; letter-spacing: 0.26em; text-transform: uppercase;
+      color: rgba(250,249,246,0.4);
+    }
+    .xmas-note {
+      font-size: 0.82rem; line-height: 1.7;
+      color: rgba(250,249,246,0.45); margin-bottom: 44px;
+      font-style: italic;
+    }
+    .xmas-cta {
+      display: inline-block;
+      padding: 14px 40px;
+      border: 1px solid rgba(250,249,246,0.3);
+      color: var(--white); text-decoration: none;
+      font-size: 0.62rem; letter-spacing: 0.28em; text-transform: uppercase;
+      font-family: var(--font-body);
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .xmas-cta:hover { background: rgba(250,249,246,0.08); border-color: rgba(250,249,246,0.6); }
 
     /* ─── MENU ───────────────────────────────────────── */
     #menu {
@@ -1739,6 +1814,8 @@
       #about { padding: 28px 0 40px; }
       .about-grid { gap: 24px; }
       .gambas-inner { padding: 40px 24px; }
+      .xmas-inner { padding: 56px 24px; }
+      .xmas-course-text { font-size: 0.94rem; line-height: 1.75; }
 
       /* 4: Getränke – Text nicht abgeschnitten */
       #wine { overflow: hidden; }
@@ -1869,6 +1946,7 @@
       <span class="fluid-close">✕</span>
     </button>
     <div class="fluid-items">
+      <a href="#xmas"        class="fluid-item">Weihnachten</a>
       <a href="#about"       class="fluid-item">Geschichte</a>
       <a href="#menu"        class="fluid-item">Speisekarte</a>
       <a href="#wine"        class="fluid-item">Getränke</a>
@@ -1886,6 +1964,7 @@
       </a>
     </div>
     <ul class="nav-links">
+      <li><a href="#xmas">Weihnachten</a></li>
       <li><a href="#about">Geschichte</a></li>
       <li><a href="#menu">Speisekarte</a></li>
       <li><a href="#wine">Getränke</a></li>
@@ -1922,6 +2001,48 @@
 
   </section>
 
+
+  <!-- WEIHNACHTSBUFFET -->
+  <section id="xmas" aria-label="Weihnachtsbuffet im Bistro-Side">
+    <div class="xmas-inner">
+      <div class="xmas-label reveal">Jetzt buchbar</div>
+      <h2 class="xmas-title reveal">WEIHNACHTSBUFFET<br><em>im Bistro-Side</em></h2>
+      <p class="xmas-sub reveal">Für Weihnachtsfeiern bis zu 45 Personen</p>
+
+      <div class="xmas-course reveal">
+        <div class="xmas-course-label">Zum Auftakt</div>
+        <p class="xmas-course-text">
+          Gemischte Brotkörbchen mit zweierlei Dips, am Tisch serviert
+        </p>
+      </div>
+
+      <div class="xmas-course reveal">
+        <div class="xmas-course-label">Vom Buffet</div>
+        <p class="xmas-course-text">
+          Klassische Käse-Lauch-Suppe<br>
+          Barberie Entenkeule, Wildgulasch, Rippenbraten vom Schwein
+          mit Äpfeln und Pflaumen gefüllt<br>
+          Rotkohl, Rosenkohl, Kroketten, Kartoffelklöße, Spätzle
+        </p>
+      </div>
+
+      <div class="xmas-course reveal">
+        <div class="xmas-course-label">Dessert</div>
+        <p class="xmas-course-text">
+          Dessertauswahl in kleinen Gläschen – von fruchtig bis schokoladig
+        </p>
+      </div>
+
+      <div class="xmas-price reveal">
+        <span class="xmas-price-val">34,00 €</span>
+        <span class="xmas-price-unit">pro Person</span>
+      </div>
+      <p class="xmas-note reveal">
+        Termine nach Absprache – wir beraten Dich gern zu Deiner Weihnachtsfeier.
+      </p>
+      <a href="#reservation" class="xmas-cta reveal">Jetzt anfragen</a>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section id="about" aria-labelledby="about-heading">
